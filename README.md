@@ -1,7 +1,7 @@
 Full Screen ANE for Adobe AIR
 =============================
 
-One of the most common complaints you hear from Adobe AIR developers is that they can't get true full screen on Android devices that use the on-screen navigation bar (the one that contains the back, home and task buttons), with full screen usually means that the buttons are simply replaced with a series of grey dots. 
+One of the most common complaints you hear from Adobe AIR developers is that they can't get true full screen on Android devices that have an on-screen navigation bar (the one that contains the back, home and task buttons), with full screen usually meaning that the buttons are simply replaced with a series of grey dots. 
 
 If you're one of those developers, then this AIR Native Extension (ANE) may be the solution you've been looking for. 
 
