@@ -8,7 +8,9 @@ If you're one of those developers, then this AIR Native Extension (ANE) may be t
 How does it work?
 -----------------
 
-This ANE enables developers to offer the same true full screen experience you see in apps like YouTube in their Adobe AIR apps, expanding their app right to the edges of the screen by hiding the status and navigation bars until the user next interacts.
+This ANE enables developers to offer the same true full screen experience you see in apps like YouTube in their own Adobe AIR apps, expanding the app right to the edges of the screen, hiding the status and navigation bars until the user next interacts.
+
+This is ideally suited to video or cut-scene content.
 
 Code example
 ------------
@@ -26,7 +28,7 @@ If you want to include the ANE in a cross-platform app, you have two options for
 ```as3
 if (!AndroidFullScreen.hideSystemUI())
 {
-  stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+    stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
@@ -35,11 +37,11 @@ or
 ```as3
 if (AndroidFullScreen.isSupported)
 {
-  AndroidFullScreen.hideSystemUI();
+    AndroidFullScreen.hideSystemUI();
 }
 else
 {
-  stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+    stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
