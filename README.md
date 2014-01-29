@@ -13,16 +13,40 @@ This ANE enables developers to offer the same true full screen experience you se
 Code example
 ------------
 
+Using the ANE in your app couldn't be easier:
+
 ```as3
 import com.mesmotronic.ane.fullscreen.AndroidFullScreen;
 
 AndroidFullScreen.hideSystemUI();
 ```
 
+If you want to include the ANE in a cross-platform app, you have two options for implementation:
+
+```as3
+if (!AndroidFullScreen.hideSystemUI())
+{
+  stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+}
+```
+
+or
+
+```as3
+if (AndroidFullScreen.isSupported)
+{
+  AndroidFullScreen.hideSystemUI();
+}
+else
+{
+  stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+}
+```
+
 What's next?
 ------------
 
-In the future, we'll probably add more of Android's ImmersiveMode features, like enabling your app to appear behind the user's status or navigation bar.
+In the future, we'll probably add more of Android's ImmersiveMode features, like enabling your app to appear behind the user's status and/or navigation bar.
 
 License
 -------
