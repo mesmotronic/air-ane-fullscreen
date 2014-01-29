@@ -19,6 +19,11 @@ import com.mesmotronic.ane.fullscreen.AndroidFullScreen;
 AndroidFullScreen.hideSystemUI();
 ```
 
+What's next?
+------------
+
+In the future, we'll probably add more of Android's ImmersiveMode features, like enabling your app to appear behind the user's status or navigation bar.
+
 License
 -------
 
