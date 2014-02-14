@@ -30,7 +30,7 @@ If you want to include the ANE in a cross-platform app, you have two options for
 ```as3
 if (!AndroidFullScreen.hideSystemUI())
 {
-    stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
@@ -43,7 +43,7 @@ if (AndroidFullScreen.isSupported)
 }
 else
 {
-    stage.displayMode = StageDisplayMode.FULL_SCREEN_INTERACTIVE;
+    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
