@@ -5,6 +5,8 @@ One of the most common complaints you hear from Adobe AIR developers is that the
 
 If you're one of those developers, then this AIR Native Extension (ANE) may be the solution you've been looking for. 
 
+This ANE requires Adobe AIR 4+.
+
 How does it work?
 -----------------
 
@@ -18,7 +20,7 @@ Code example
 Using the ANE in your app couldn't be easier:
 
 ```as3
-import com.mesmotronic.ane.fullscreen.AndroidFullScreen;
+import com.mesmotronic.ane.AndroidFullScreen;
 
 AndroidFullScreen.hideSystemUI();
 ```

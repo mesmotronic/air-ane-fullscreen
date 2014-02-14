@@ -35,16 +35,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	xmlns:s="library://ns.adobe.com/flex/spark" 
 	applicationDPI="160"
 	backgroundColor="#FF00FF"
+	resize="resizeHandler(event)"
+	addedToStage="addedToStageHandler(event)"
 	>
 	
 	<fx:Script>
 		<![CDATA[
 			import com.mesmotronic.ane.AndroidFullScreen;
 			
+			import mx.events.ResizeEvent;
+			
 			protected function fullScreenButton_clickHandler(event:MouseEvent):void
 			{
 				AndroidFullScreen.hideSystemUI();
 			}
+			
+			protected function resizeHandler(event:ResizeEvent):void
+			{
+				trace("Application:", width, "x", height);
+			}
+			
+			protected function addedToStageHandler(event:Event):void
+			{
+				stage.addEventListener(Event.RESIZE, function(e:Event):void
+				{
+					trace("stage:", stage.stageWidth, "x", stage.stageHeight);
+				});
+			}
+			
 		]]>
 	</fx:Script>
 	
