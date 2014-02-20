@@ -47,6 +47,11 @@ else
 }
 ```
 
+Starling
+--------
+
+To use this ANE with Starling,  add *Starling.handleLostContext = true;* at the start of your ActionScript code to prevent Stage3D lost context errors breaking your app when switching between the normal app state and true full screen.
+
 What's next?
 ------------
 
