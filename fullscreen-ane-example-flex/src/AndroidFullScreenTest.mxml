@@ -78,13 +78,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<s:Button 
 		label="hideSystemUI()"
 		click="AndroidFullScreen.hideSystemUI()"
-		width="50%"
+		width="75%"
 		/>
 	
 	<s:Button 
 		label="showSystemUI()"
 		click="AndroidFullScreen.showSystemUI()"
-		width="50%"
+		width="75%"
 		/>
 	
 	<s:Label 
@@ -96,19 +96,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<s:Button 
 		label="immersiveMode()"
 		click="AndroidFullScreen.immersiveMode()"
-		width="50%"
+		width="75%"
 		/>
 	
 	<s:Button 
 		label="immersiveMode(false)"
 		click="AndroidFullScreen.immersiveMode(false)"
-		width="50%"
+		width="75%"
 		/>
 	
 	<s:Button 
 		label="showUnderSystemUI()"
 		click="AndroidFullScreen.showUnderSystemUI()"
-		width="50%"
+		width="75%"
 		/>
 	
 </s:Application>
