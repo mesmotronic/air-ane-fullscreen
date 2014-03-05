@@ -10,11 +10,11 @@ This ANE requires Adobe AIR 4+.
 How does it work?
 -----------------
 
-This ANE enables developers to offer users a true full screen experience in the Adobe AIR app for Android.
+This ANE enables developers to offer users a true full screen experience in the Adobe AIR apps for Android.
 
 Using Android 4.0+, you can use true full screen in "lean mode", the way you see in apps like YouTube, expanding the app right to the edges of the screen, hiding the status and navigation bars until the user next interacts. This is ideally suited to video or cut-scene content.
 
-In Android 4.4+, you can now enter true full screem, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
+In Android 4.4+, however, you can now enter true full screem, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
 
 
 Code example
