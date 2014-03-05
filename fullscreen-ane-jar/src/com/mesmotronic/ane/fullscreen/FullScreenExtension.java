@@ -45,14 +45,13 @@ public class FullScreenExtension implements FREExtension
 	@Override
 	public void dispose() 
 	{
-		// TODO ;-)
-
+		// Nothing to do here ;-)
 	}
 
 	@Override
 	public void initialize() 
 	{
-		// TODO :-)
+		// Or here :-)
 	}
 
 }

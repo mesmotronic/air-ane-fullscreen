@@ -60,5 +60,37 @@ package com.mesmotronic.ane
 			if (!context) return false;
 			return context.call("hideSystemUI");
 		}
+		
+		/**
+		 * Puts your app into full screen immersive mode, hiding the system and 
+		 * navigation bars. Users can show them by swiping from the top of the screen.
+		 * 
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function immersiveMode(sticky:Boolean=true):Boolean
+		{
+			if (!context) return false;
+			return context.call("immersiveMode", sticky);
+		}
+		
+		/**
+		 * Show the system status and navigation bars
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function showSystemUI():Boolean
+		{
+			if (!context) return false;
+			return context.call("showSystemUI");
+		}
+
+		/**
+		 * Extends your app underneath the status and navigation bar
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function showUnderSystemUI():Boolean
+		{
+			if (!context) return false;
+			return context.call("showUnderSystemUI");
+		}
 	}
 }

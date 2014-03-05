@@ -27,12 +27,9 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package com.mesmotronic.ane
 {
-	import flash.events.EventDispatcher;
-	
-	public class AndroidFullScreen extends EventDispatcher
+	public class AndroidFullScreen
 	{
 		static public function get isSupported():Boolean
 		{
@@ -41,11 +38,41 @@ package com.mesmotronic.ane
 		
 		/**
 		 * Hides the system status and navigation bars
-		 * @return		Boolean		false because this platform isn't supported
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */
 		static public function hideSystemUI():Boolean
 		{
 			return false;
 		}
+		
+		/**
+		 * Puts your app into full screen immersive mode, hiding the system and 
+		 * navigation bars. Users can show them by swiping from the top of the screen.
+		 * 
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function immersiveMode(sticky:Boolean=true):Boolean
+		{
+			return false;
+		}
+		
+		/**
+		 * Show the system status and navigation bars
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function showSystemUI():Boolean
+		{
+			return false;
+		}
+		
+		/**
+		 * Extends your app underneath the status and navigation bar
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function showUnderSystemUI():Boolean
+		{
+			return false;
+		}
 	}
 }
+

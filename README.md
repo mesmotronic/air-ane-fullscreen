@@ -10,9 +10,12 @@ This ANE requires Adobe AIR 4+.
 How does it work?
 -----------------
 
-This ANE enables developers to offer the same true full screen experience you see in apps like YouTube in their own Adobe AIR apps, expanding the app right to the edges of the screen, hiding the status and navigation bars until the user next interacts.
+This ANE enables developers to offer users a true full screen experience in the Adobe AIR app for Android.
 
-This is ideally suited to video or cut-scene content.
+Using Android 4.0+, you can use true full screen in "lean mode", the way you see in apps like YouTube, expanding the app right to the edges of the screen, hiding the status and navigation bars until the user next interacts. This is ideally suited to video or cut-scene content.
+
+In Android 4.4+, you can now enter true full screem, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
+
 
 Code example
 ------------
@@ -22,7 +25,11 @@ Using the ANE in your app couldn't be easier:
 ```as3
 import com.mesmotronic.ane.AndroidFullScreen;
 
-AndroidFullScreen.hideSystemUI();
+AndroidFullScreen.hideSystemUI(); // Hide system UI until user interacts
+AndroidFullScreen.showSystemUI(); // Show system UI
+AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI
+AndroidFullScreen.immersiveMode(); // Hide system UI in sticky mode (Android 4.4+ only)
+AndroidFullScreen.immersiveMode(false); // Hides system UI until user swipes from top (Android 4.4+ only)
 ```
 
 If you want to include the ANE in a cross-platform app, you have two options for implementation:
@@ -51,11 +58,6 @@ Starling
 --------
 
 To use this ANE with Starling,  add *Starling.handleLostContext = true;* at the start of your ActionScript code to prevent Stage3D lost context errors breaking your app when switching between the normal app state and true full screen.
-
-What's next?
-------------
-
-In the future, we'll probably add more of Android's ImmersiveMode features, like enabling your app to appear behind the user's status and/or navigation bar.
 
 License
 -------

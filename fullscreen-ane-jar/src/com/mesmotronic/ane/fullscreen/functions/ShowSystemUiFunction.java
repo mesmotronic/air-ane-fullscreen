@@ -36,7 +36,7 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
-public class HideSystemUiFunction implements FREFunction 
+public class ShowSystemUiFunction implements FREFunction 
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 
@@ -44,12 +44,7 @@ public class HideSystemUiFunction implements FREFunction
 		try
 		{
 			View decorView = context.getActivity().getWindow().getDecorView();
-			
-			int uiOptions = 
-				View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-				| View.SYSTEM_UI_FLAG_FULLSCREEN;
-			
-			decorView.setSystemUiVisibility(uiOptions);
+			decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 		}
 		catch (Exception e0)
 		{

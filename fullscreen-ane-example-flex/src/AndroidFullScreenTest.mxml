@@ -45,11 +45,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			
 			import mx.events.ResizeEvent;
 			
-			protected function fullScreenButton_clickHandler(event:MouseEvent):void
-			{
-				AndroidFullScreen.hideSystemUI();
-			}
-			
 			protected function resizeHandler(event:ResizeEvent):void
 			{
 				trace("Application:", width, "x", height);
@@ -66,14 +61,54 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		]]>
 	</fx:Script>
 	
+	<s:layout>
+		<s:VerticalLayout 
+			horizontalAlign="center"
+			verticalAlign="middle"
+			gap="5" 
+			/>
+	</s:layout>
+	
+	<s:Label 
+		text="Android 4.0+" 
+		verticalAlign="middle"
+		height="30"
+		/>
+	
 	<s:Button 
-		id="fullScreenButton"
-		label="GO!"
-		click="fullScreenButton_clickHandler(event)"
-		horizontalCenter="0"
-		verticalCenter="0"
-		width="25%"
-		height="25%"
+		label="hideSystemUI()"
+		click="AndroidFullScreen.hideSystemUI()"
+		width="50%"
+		/>
+	
+	<s:Button 
+		label="showSystemUI()"
+		click="AndroidFullScreen.showSystemUI()"
+		width="50%"
+		/>
+	
+	<s:Label 
+		text="Android 4.4+" 
+		verticalAlign="middle"
+		height="30"
+		/>
+	
+	<s:Button 
+		label="immersiveMode()"
+		click="AndroidFullScreen.immersiveMode()"
+		width="50%"
+		/>
+	
+	<s:Button 
+		label="immersiveMode(false)"
+		click="AndroidFullScreen.immersiveMode(false)"
+		width="50%"
+		/>
+	
+	<s:Button 
+		label="showUnderSystemUI()"
+		click="AndroidFullScreen.showUnderSystemUI()"
+		width="50%"
 		/>
 	
 </s:Application>

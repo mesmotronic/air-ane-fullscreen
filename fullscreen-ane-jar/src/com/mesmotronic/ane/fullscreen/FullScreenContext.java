@@ -35,7 +35,10 @@ import java.util.Map;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
+import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
+import com.mesmotronic.ane.fullscreen.functions.ShowSystemUiFunction;
+import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
 
 public class FullScreenContext extends FREContext 
 {
@@ -46,14 +49,16 @@ public class FullScreenContext extends FREContext
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
 	public Map<String, FREFunction> getFunctions() 
 	{
 		Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
 		
-//		functions.put("init", new InitFunction());
 		functions.put("hideSystemUI", new HideSystemUiFunction());
+		functions.put("immersiveMode", new ImmersiveModeFunction());
+		functions.put("showSystemUI", new ShowSystemUiFunction());
+		functions.put("showUnderSystemUI", new ShowUnderSystemUiFunction());
 		
 		return functions;
 	}

@@ -36,7 +36,7 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
-public class HideSystemUiFunction implements FREFunction 
+public class ImmersiveModeFunction implements FREFunction 
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 
@@ -44,10 +44,25 @@ public class HideSystemUiFunction implements FREFunction
 		try
 		{
 			View decorView = context.getActivity().getWindow().getDecorView();
+			Boolean useSticky = true;
+			
+			try 
+			{
+				useSticky = args[0].getAsBool();
+			}
+			catch (Exception e3) {}
+			
+			int immersive = useSticky
+				? View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+				: View.SYSTEM_UI_FLAG_IMMERSIVE;
 			
 			int uiOptions = 
-				View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-				| View.SYSTEM_UI_FLAG_FULLSCREEN;
+				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+				| View.SYSTEM_UI_FLAG_FULLSCREEN
+				| immersive;
 			
 			decorView.setSystemUiVisibility(uiOptions);
 		}
