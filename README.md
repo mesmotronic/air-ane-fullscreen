@@ -22,33 +22,34 @@ Code example
 
 Using the ANE in your app couldn't be easier:
 
+
 ```as3
 import com.mesmotronic.ane.AndroidFullScreen;
 
+AndroidFullScreen.isSupported; // Is this ANE supported?
+AndroidFullScreen.isImmersiveModeSupported; // Is immersive mode supported?
 AndroidFullScreen.hideSystemUI(); // Hide system UI until user interacts
 AndroidFullScreen.showSystemUI(); // Show system UI
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI
 AndroidFullScreen.immersiveMode(); // Hide system UI in sticky mode (Android 4.4+ only)
-AndroidFullScreen.immersiveMode(false); // Hides system UI until user swipes from top (Android 4.4+ only)
+AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
 ```
 
-If you want to include the ANE in a cross-platform app, you have two options for implementation:
+All methods return Boolean values: *true* if the action was successful, *false* if it wasn't (or isn't supported); if you're using the ANE in an app for a platform other than Android, all properties and methods will return false.
+
+Therefore, the simplest way to give users the best possible interactive full screen experience in your app is:
 
 ```as3
-if (!AndroidFullScreen.hideSystemUI())
+if (!AndroidFullScreen.immersiveMode())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
-or
+And a great way to offer the best possible full screen video playback is:
 
 ```as3
-if (AndroidFullScreen.isSupported)
-{
-    AndroidFullScreen.hideSystemUI();
-}
-else
+if (!AndroidFullScreen.hideSystemUI())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
