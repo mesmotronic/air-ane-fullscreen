@@ -31,58 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
-import android.view.View;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
-public class ImmersiveModeFunction implements FREFunction 
+public class IsImmersiveModeSupportedFunction implements FREFunction 
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 
 	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
-		{
-			try { return FREObject.newObject(false); }
-			catch (Exception e1) { return null; }
-		}
-		
-		try
-		{
-			View decorView = context.getActivity().getWindow().getDecorView();
-			Boolean useSticky = true;
-			
-			try 
-			{
-				useSticky = args[0].getAsBool();
-			}
-			catch (Exception e3) {}
-			
-			int immersive = useSticky
-				? View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-				: View.SYSTEM_UI_FLAG_IMMERSIVE;
-			
-			int uiOptions = 
-				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-				| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-				| View.SYSTEM_UI_FLAG_FULLSCREEN
-				| immersive;
-			
-			decorView.setSystemUiVisibility(uiOptions);
-		}
-		catch (Exception e0)
-		{
-			try { return FREObject.newObject(false); }
-			catch (Exception e1) { return null; }
-		}
-		
-		try { return FREObject.newObject(true); }
-		catch (Exception e2) {}
-		
-		return null;
+		try { return FREObject.newObject(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT); }
+		catch (Exception e1) { return null; }
 	}
 	
 }

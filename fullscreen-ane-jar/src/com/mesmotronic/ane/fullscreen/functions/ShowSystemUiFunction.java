@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.mesmotronic.ane.fullscreen.functions;
 
+import android.os.Build;
 import android.view.View;
 
 import com.adobe.fre.FREContext;
@@ -41,6 +42,12 @@ public class ShowSystemUiFunction implements FREFunction
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 
 	{
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+		{
+			try { return FREObject.newObject(false); }
+			catch (Exception e1) { return null; }
+		}
+		
 		try
 		{
 			View decorView = context.getActivity().getWindow().getDecorView();

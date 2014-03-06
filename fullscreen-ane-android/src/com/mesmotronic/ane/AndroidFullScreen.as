@@ -74,6 +74,17 @@ package com.mesmotronic.ane
 		}
 		
 		/**
+		 * Is immersive mode supported on this device? 
+		 * 
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function get isImmersiveModeSupported():Boolean
+		{
+			if (!context) return false;
+			return context.call("immersiveModeSupported");
+		}
+		
+		/**
 		 * Show the system status and navigation bars
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */

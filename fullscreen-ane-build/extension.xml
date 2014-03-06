@@ -5,7 +5,7 @@
 	<platforms>
 		<platform name="Android-ARM">
 			<applicationDeployment>
-				<nativeLibrary>FullScreenExtension.jar</nativeLibrary>
+				<nativeLibrary>fullscreen-ane-jar.jar</nativeLibrary>
 				<initializer>com.mesmotronic.ane.fullscreen.FullScreenExtension</initializer>
 			</applicationDeployment>
 		</platform>
