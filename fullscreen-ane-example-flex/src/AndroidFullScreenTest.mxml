@@ -78,12 +78,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<s:Button 
 		label="hideSystemUI()"
 		click="AndroidFullScreen.hideSystemUI()"
+		enabled="{AndroidFullScreen.isSupported}"
 		width="75%"
 		/>
 	
 	<s:Button 
 		label="showSystemUI()"
 		click="AndroidFullScreen.showSystemUI()"
+		enabled="{AndroidFullScreen.isSupported}"
 		width="75%"
 		/>
 	
@@ -96,18 +98,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<s:Button 
 		label="immersiveMode()"
 		click="AndroidFullScreen.immersiveMode()"
+		enabled="{AndroidFullScreen.isImmersiveModeSupported}"
 		width="75%"
 		/>
 	
 	<s:Button 
 		label="immersiveMode(false)"
 		click="AndroidFullScreen.immersiveMode(false)"
+		enabled="{AndroidFullScreen.isImmersiveModeSupported}"
 		width="75%"
 		/>
 	
 	<s:Button 
 		label="showUnderSystemUI()"
 		click="AndroidFullScreen.showUnderSystemUI()"
+		enabled="{AndroidFullScreen.isImmersiveModeSupported}"
 		width="75%"
 		/>
 	
