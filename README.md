@@ -56,7 +56,7 @@ And a great way to offer the best possible full screen video playback is:
 ```as3
 if (!AndroidFullScreen.hideSystemUI())
 {
-    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+    stage.displayState = StageDisplayState.FULL_SCREEN;
 }
 ```
 
