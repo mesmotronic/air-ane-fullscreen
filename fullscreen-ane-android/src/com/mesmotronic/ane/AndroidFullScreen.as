@@ -81,7 +81,7 @@ package com.mesmotronic.ane
 		static public function get isImmersiveModeSupported():Boolean
 		{
 			if (!context) return false;
-			return context.call("immersiveModeSupported");
+			return context.call("isImmersiveModeSupported");
 		}
 		
 		/**
