@@ -9,7 +9,7 @@ To use this example:
 * Open `AndroidFullScreenTest.as3proj` in FlashDevelop
 * Build the project
 * Run `PackageApp.bat`
-* Install `dist/AndroidFullScreenTest.apk` on your device
+* Install `dist/AndroidFullScreenTest.apk` on your device (if it hasn't already installed automatically)
 * That's it!
 
 You should have no problems using the ANE without renaming it or extracting the files, as is often suggested online.
