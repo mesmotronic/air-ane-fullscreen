@@ -11,3 +11,5 @@ To use this example:
 * Run `PackageApp.bat`
 * Install `dist/AndroidFullScreenTest.apk` on your device
 * That's it!
+
+You should have no problems using the ANE without renaming it or extracting the files, as is often suggested online.
