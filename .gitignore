@@ -2,3 +2,6 @@
 /fullscreen-ane-example-as3/extensions/AndroidFullScreen.ane
 /fullscreen-ane-example-flex/extensions/AndroidFullScreen.ane
 /fullscreen-ane-example-flex/AndroidFullScreenTest.apk
+/fullscreen-ane-example-as3-fd/obj
+/fullscreen-ane-example-as3-fd/dist/AndroidFullScreenTest.apk
+/fullscreen-ane-example-as3-fd/bin/AndroidFullScreenTest.swf
