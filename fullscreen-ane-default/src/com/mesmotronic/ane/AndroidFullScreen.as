@@ -57,6 +57,24 @@ package com.mesmotronic.ane
 		}
 		
 		/**
+		 * The height of the screen in immersive mode, or 0 if immersive mode is not supported
+		 * @return		int
+		 */
+		static public function get immersiveHeight():int
+		{
+			return 0;
+		}
+		
+		/**
+		 * The width of the screen in immersive mode, or 0 if immersive mode is not supported
+		 * @return		int
+		 */
+		static public function get immersiveWidth():int
+		{
+			return 0;
+		}
+		
+		/**
 		 * Is immersive mode supported on this device? 
 		 * 
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true

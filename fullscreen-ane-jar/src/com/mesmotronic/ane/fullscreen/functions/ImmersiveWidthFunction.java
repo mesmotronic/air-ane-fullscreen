@@ -28,42 +28,34 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package com.mesmotronic.ane.fullscreen;
+package com.mesmotronic.ane.fullscreen.functions;
 
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Point;
+import android.view.View;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.mesmotronic.ane.fullscreen.functions.ImmersiveHeightFunction;
-import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
-import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
-import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
-import com.mesmotronic.ane.fullscreen.functions.IsImmersiveModeSupportedFunction;
-import com.mesmotronic.ane.fullscreen.functions.ShowSystemUiFunction;
-import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
+import com.adobe.fre.FREObject;
 
-public class FullScreenContext extends FREContext 
+public class ImmersiveWidthFunction implements FREFunction 
 {
 	@Override
-	public void dispose() 
+	public FREObject call(FREContext context, FREObject[] args) 
 	{
-		// Not required
+		try
+		{
+			View decorView = context.getActivity().getWindow().getDecorView();
+			Point outSize = new Point();
+			
+			decorView.getDisplay().getRealSize(outSize);
+			
+			return FREObject.newObject(outSize.x);
+		}
+		catch (Exception e0)
+		{
+			try { return FREObject.newObject(0); }
+			catch (Exception e1) { return null; }
+		}
 	}
 	
-	@Override
-	public Map<String, FREFunction> getFunctions() 
-	{
-		Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
-		
-		functions.put("hideSystemUI", new HideSystemUiFunction());
-		functions.put("immersiveMode", new ImmersiveModeFunction());
-		functions.put("immersiveHeight", new ImmersiveHeightFunction());
-		functions.put("immersiveWidth", new ImmersiveWidthFunction());
-		functions.put("isImmersiveModeSupported", new IsImmersiveModeSupportedFunction());
-		functions.put("showSystemUI", new ShowSystemUiFunction());
-		functions.put("showUnderSystemUI", new ShowUnderSystemUiFunction());
-		
-		return functions;
-	}
 }

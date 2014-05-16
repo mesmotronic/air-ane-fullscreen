@@ -68,7 +68,7 @@ package
 			textField = new TextField();
 			textField.defaultTextFormat = new TextFormat("_sans", 36, 0xFFFFFF);
 			textField.autoSize = TextFieldAutoSize.LEFT;
-			textField.text = "Tap anywhere to go full screen!";
+			textField.text = "Tap anywhere to go full screen ("+AndroidFullScreen.immersiveWidth+"x"+AndroidFullScreen.immersiveHeight+")!";
 			textField.x = 10;
 			textField.y = 10;
 			

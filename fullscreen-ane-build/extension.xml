@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension xmlns="http://ns.adobe.com/air/extension/4.0">
+<extension xmlns="http://ns.adobe.com/air/extension/13.0">
 	<id>com.mesmotronic.ane.fullscreen</id>
-	<versionNumber>1.0.0</versionNumber>
+	<versionNumber>1.2.1</versionNumber>
 	<platforms>
 		<platform name="Android-ARM">
 			<applicationDeployment>

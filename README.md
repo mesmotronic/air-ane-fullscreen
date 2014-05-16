@@ -38,9 +38,13 @@ AndroidFullScreen.showSystemUI(); // Show system UI
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
+AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
+AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
 ```
 
 All methods return Boolean values: *true* if the action was successful, *false* if it wasn't (or isn't supported); if you're using the ANE in an app for a platform other than Android, all properties and methods will return false.
+
+The `immersiveWidth` and `immersiveHeight` properties return the screen width and height available in immersive mode (or with the system UI hidden), or 0 if the ANE isn't supported.
 
 Therefore, the simplest way to give users the best possible interactive full screen experience in your app is:
 
@@ -59,6 +63,13 @@ if (!AndroidFullScreen.hideSystemUI())
     stage.displayState = StageDisplayState.FULL_SCREEN;
 }
 ```
+
+Getting the immersive screen size
+---------------------------------
+
+You can use the `immersiveWidth` and `immersiveHeight` properties to find out the dimensions of the screen with the system UI hidden.
+
+To find out the stage size after calling `immersiveMode()` or `hideSystemUI()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
 
 Starling
 --------

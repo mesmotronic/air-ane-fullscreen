@@ -16,7 +16,7 @@ are permitted provided that the following conditions are met:
   contributors may be used to endorse or promote products derived from
   this software without specific prior written permission.
 	
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
@@ -58,7 +58,7 @@ package com.mesmotronic.ane
 		static public function hideSystemUI():Boolean
 		{
 			if (!context) return false;
-			return context.call("hideSystemUI");
+			return context.call('hideSystemUI');
 		}
 		
 		/**
@@ -70,7 +70,27 @@ package com.mesmotronic.ane
 		static public function immersiveMode(sticky:Boolean=true):Boolean
 		{
 			if (!context) return false;
-			return context.call("immersiveMode", sticky);
+			return context.call('immersiveMode', sticky);
+		}
+		
+		/**
+		 * The height of the screen in immersive mode, or 0 if immersive mode is not supported
+		 * @return		int
+		 */
+		static public function get immersiveHeight():int
+		{
+			if (!context) return 0;
+			return context.call('immersiveHeight') as int;
+		}
+		
+		/**
+		 * The width of the screen in immersive mode, or 0 if immersive mode is not supported
+		 * @return		int
+		 */
+		static public function get immersiveWidth():int
+		{
+			if (!context) return 0;
+			return context.call('immersiveWidth') as int;
 		}
 		
 		/**
@@ -81,7 +101,7 @@ package com.mesmotronic.ane
 		static public function get isImmersiveModeSupported():Boolean
 		{
 			if (!context) return false;
-			return context.call("isImmersiveModeSupported");
+			return context.call('isImmersiveModeSupported');
 		}
 		
 		/**
@@ -91,7 +111,7 @@ package com.mesmotronic.ane
 		static public function showSystemUI():Boolean
 		{
 			if (!context) return false;
-			return context.call("showSystemUI");
+			return context.call('showSystemUI');
 		}
 
 		/**
@@ -101,7 +121,7 @@ package com.mesmotronic.ane
 		static public function showUnderSystemUI():Boolean
 		{
 			if (!context) return false;
-			return context.call("showUnderSystemUI");
+			return context.call('showUnderSystemUI');
 		}
 	}
 }
