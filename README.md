@@ -5,7 +5,7 @@ One of the most common complaints you hear from Adobe AIR developers is that the
 
 If you're one of those developers, then this AIR Native Extension (ANE) may be the solution you've been looking for. 
 
-This ANE requires Adobe AIR 4+.
+This ANE requires Adobe AIR 13+.
 
 Just give me the ANE!
 ---------------------
@@ -27,19 +27,19 @@ Code example
 
 Using the ANE in your app couldn't be easier:
 
-
 ```as3
 import com.mesmotronic.ane.AndroidFullScreen;
 
 AndroidFullScreen.isSupported; // Is this ANE supported?
 AndroidFullScreen.isImmersiveModeSupported; // Is immersive mode supported?
+AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
+AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
+
 AndroidFullScreen.hideSystemUI(); // Hide system UI until user interacts
 AndroidFullScreen.showSystemUI(); // Show system UI
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
-AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
-AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
 ```
 
 All methods return Boolean values: *true* if the action was successful, *false* if it wasn't (or isn't supported); if you're using the ANE in an app for a platform other than Android, all properties and methods will return false.
@@ -67,14 +67,14 @@ if (!AndroidFullScreen.hideSystemUI())
 Getting the immersive screen size
 ---------------------------------
 
-You can use the `immersiveWidth` and `immersiveHeight` properties to find out the dimensions of the screen with the system UI hidden.
+You can use the `immersiveWidth` and `immersiveHeight` properties to find out the dimensions of the screen with the system UI hidden, regardless of the current screen state.
 
 To find out the stage size after calling `immersiveMode()` or `hideSystemUI()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
 
 Starling
 --------
 
-To use this ANE with Starling,  add *Starling.handleLostContext = true;* at the start of your ActionScript code to prevent Stage3D lost context errors breaking your app when switching between the normal app state and true full screen.
+To use this ANE with Starling,  add `Starling.handleLostContext = true;` at the start of your ActionScript code to prevent Stage3D lost context errors breaking your app when switching between the normal app state and true full screen.
 
 License
 -------
