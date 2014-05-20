@@ -56,6 +56,7 @@ public class HideSystemUiFunction implements FREFunction
 				View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_FULLSCREEN;
 			
+			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(uiOptions);
 		}
 		catch (Exception e0)

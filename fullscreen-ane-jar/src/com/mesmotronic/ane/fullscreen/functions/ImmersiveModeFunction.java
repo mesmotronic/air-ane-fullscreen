@@ -50,20 +50,20 @@ public class ImmersiveModeFunction implements FREFunction
 		
 		try
 		{
-			View decorView = context.getActivity().getWindow().getDecorView();
-			Boolean useSticky = true;
+			final View decorView = context.getActivity().getWindow().getDecorView();
+			Boolean isSticky = true;
 			
 			try 
 			{
-				useSticky = args[0].getAsBool();
+				isSticky = args[0].getAsBool();
 			}
 			catch (Exception e3) {}
 			
-			int immersive = useSticky
+			int immersive = isSticky
 				? View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 				: View.SYSTEM_UI_FLAG_IMMERSIVE;
 			
-			int uiOptions = 
+			final int uiOptions = 
 				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -71,7 +71,24 @@ public class ImmersiveModeFunction implements FREFunction
 				| View.SYSTEM_UI_FLAG_FULLSCREEN
 				| immersive;
 			
+			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(uiOptions);
+			
+			/*
+			 * It's been reported that some devices drop out of immersive mode
+			 * when the user changes the volume, this *should* fix it: 
+			 */
+			if (isSticky)
+			{
+				decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+				{
+					@Override
+					public void onSystemUiVisibilityChange(int visibility) 
+					{
+						decorView.setSystemUiVisibility(uiOptions);
+					}
+				});
+			}
 		}
 		catch (Exception e0)
 		{

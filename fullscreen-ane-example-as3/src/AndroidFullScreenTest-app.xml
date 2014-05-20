@@ -10,12 +10,13 @@
 	<initialWindow>
 		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
 		<aspectRatio>landscape</aspectRatio>
-		<autoOrients>false</autoOrients>
+		<autoOrients>true</autoOrients>
+        <renderMode>gpu</renderMode>
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
     </initialWindow>
-
+	
 	<android>
         <colorDepth>16bit</colorDepth>
         <manifestAdditions><![CDATA[

@@ -51,6 +51,8 @@ public class ShowSystemUiFunction implements FREFunction
 		try
 		{
 			View decorView = context.getActivity().getWindow().getDecorView();
+			
+			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 		}
 		catch (Exception e0)
