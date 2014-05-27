@@ -32,6 +32,8 @@ package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -50,7 +52,16 @@ public class ShowUnderSystemUiFunction implements FREFunction
 		
 		try
 		{
-			View decorView = context.getActivity().getWindow().getDecorView();
+			// Make the status and nav bars translucent
+			
+			Window window = context.getActivity().getWindow();
+			
+	        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+	        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+	        
+	        // Extend view underneath status and nav bars
+	        
+			View decorView = window.getDecorView();
 			
 			int uiOptions = 
 				View.SYSTEM_UI_FLAG_LAYOUT_STABLE

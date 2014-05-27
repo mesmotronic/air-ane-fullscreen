@@ -32,6 +32,8 @@ package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -50,7 +52,14 @@ public class ShowSystemUiFunction implements FREFunction
 		
 		try
 		{
-			View decorView = context.getActivity().getWindow().getDecorView();
+			// Remove translucent theme from bars
+			
+			Window window = context.getActivity().getWindow();
+			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+	        
+	        // Update system UI
+	        
+			View decorView = window.getDecorView();
 			
 			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
