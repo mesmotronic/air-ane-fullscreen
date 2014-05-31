@@ -21,6 +21,8 @@ Using Android 4.0+, you can use true full screen in "lean mode", the way you see
 
 In Android 4.4+, however, you can now enter true full screem, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
 
+If you find that the ANE doesn't work as you might like on a specific device or Android configuration you're using, don't forget that this project is open source, so feel free to fork the project and adapt it to work in any way you like!
+
 
 Code example
 ------------

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<application xmlns="http://ns.adobe.com/air/application/4.0">
+<application xmlns="http://ns.adobe.com/air/application/13.0">
   <id>fullscreenanetest</id>
   <versionNumber>1.0.0</versionNumber>
   <versionLabel/>
@@ -25,6 +25,14 @@
 <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>]]></manifestAdditions>
   </android>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
