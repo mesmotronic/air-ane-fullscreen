@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/13.0">
+<application xmlns="http://ns.adobe.com/air/application/14.0">
 
 	<id>com.mesmotronic.ane.fullscreen.test</id>
 
 	<filename>AndroidFullScreenTest</filename>
-	<name>Android Full Screen Test</name>
+	<name>Android Full Screen Test (Flex)</name>
 	<versionNumber>1.0.0</versionNumber>
 	
 	<initialWindow>
@@ -13,6 +13,7 @@
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
+		<renderMode>gpu</renderMode>
     </initialWindow>
 	
 	<android>

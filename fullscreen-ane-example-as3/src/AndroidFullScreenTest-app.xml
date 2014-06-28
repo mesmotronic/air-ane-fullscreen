@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/13.0">
+<application xmlns="http://ns.adobe.com/air/application/14.0">
 
 	<id>com.mesmotronic.ane.fullscreen.test</id>
 
 	<filename>AndroidFullScreenTest</filename>
-	<name>Android Full Screen Test</name>
+	<name>Android Full Screen Test (ActionScript)</name>
 	<versionNumber>1.0.0</versionNumber>
 	
 	<initialWindow>
 		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
-		<aspectRatio>landscape</aspectRatio>
+		<aspectRatio>portrait</aspectRatio>
 		<autoOrients>true</autoOrients>
-        <renderMode>gpu</renderMode>
+        <renderMode>direct</renderMode>
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
