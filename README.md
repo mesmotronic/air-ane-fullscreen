@@ -23,6 +23,10 @@ In Android 4.4+, however, you can now enter true full screem, fully interactive 
 
 If you find that the ANE doesn't work as you might like on a specific device or Android configuration you're using, don't forget that this project is open source, so feel free to fork the project and adapt it to work in any way you like!
 
+Direct Mode
+-----------
+
+If you're using `<renderMode>direct</renderMode>` with `stage.displayState = StageDisplayState.FULL_SCREEN` or `FULL_SCREEN_INTERACTIVE`, you need to run `stage.displayState = StageDisplayState.NORMAL` before calling `immersiveMode()` to prevent Sprites and other DisplayObjects being cropped in the area where the navigation bar used to be.
 
 Code example
 ------------
