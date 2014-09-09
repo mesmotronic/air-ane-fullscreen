@@ -68,6 +68,7 @@ public class ShowUnderSystemUiFunction implements FREFunction
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
 			
+			decorView.setOnFocusChangeListener(null);
 			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(uiOptions);
 		}

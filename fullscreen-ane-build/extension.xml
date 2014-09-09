@@ -1,6 +1,6 @@
 <extension xmlns="http://ns.adobe.com/air/extension/14.0">
 	<id>com.mesmotronic.ane.fullscreen</id>
-	<versionNumber>1.2.5</versionNumber>
+	<versionNumber>1.2.6</versionNumber>
 	<platforms>
 		<platform name="Android-ARM">
 			<applicationDeployment>

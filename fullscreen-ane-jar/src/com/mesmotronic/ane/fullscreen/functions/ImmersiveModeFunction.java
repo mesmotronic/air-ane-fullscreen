@@ -71,6 +71,7 @@ public class ImmersiveModeFunction implements FREFunction
 				| View.SYSTEM_UI_FLAG_FULLSCREEN
 				| immersive;
 			
+			decorView.setOnFocusChangeListener(null);
 			decorView.setOnSystemUiVisibilityChangeListener(null);
 			decorView.setSystemUiVisibility(uiOptions);
 			
@@ -80,6 +81,18 @@ public class ImmersiveModeFunction implements FREFunction
 			 */
 			if (isSticky)
 			{
+				decorView.setOnFocusChangeListener(new View.OnFocusChangeListener() 
+				{
+					@Override
+					public void onFocusChange(View v, boolean hasFocus) 
+					{
+						if (hasFocus)
+						{
+							decorView.setSystemUiVisibility(uiOptions);
+						}
+					}
+				});
+				
 				decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
 				{
 					@Override
