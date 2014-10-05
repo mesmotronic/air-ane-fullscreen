@@ -26,10 +26,10 @@ If you need to fix it, fork it!
 
 This is a free, open-source project, so if you find the ANE doesn't work as you might like with a specific device, configuration or library you're using: fork it, fix it, let us know.
 
-Direct Mode
------------
+stage.displayState
+------------------
 
-If you're using `<renderMode>direct</renderMode>` with `stage.displayState = StageDisplayState.FULL_SCREEN` or `FULL_SCREEN_INTERACTIVE`, you need to run `stage.displayState = StageDisplayState.NORMAL` before calling `immersiveMode()` to prevent Sprites and other DisplayObjects being cropped in the area where the navigation bar used to be.
+Ensure that `stage.displayState = StageDisplayState.NORMAL` when using any method of this ANE to prevent Sprites and other DisplayObjects being cropped in the area where the navigation bar used to be.
 
 Code example
 ------------
@@ -58,18 +58,39 @@ The `immersiveWidth` and `immersiveHeight` properties return the screen width an
 Therefore, the simplest way to give users the best possible interactive full screen experience in your app is:
 
 ```as3
-if (!AndroidFullScreen.immersiveMode())
+if (AndroidFullScreen.immersiveMode())
+{
+    stage.displayState = StageDisplayState.NORMAL;
+}
+else
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
-And a great way to offer the best possible full screen video playback is:
+An easy way to extend your app underneath the status and navigation bars is:
 
 ```as3
-if (!AndroidFullScreen.hideSystemUI())
+if (AndroidFullScreen.showUnderSystemUI())
 {
-    stage.displayState = StageDisplayState.FULL_SCREEN;
+    stage.displayState = StageDisplayState.NORMAL;
+}
+else
+{
+    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+}
+```
+
+And a great way to offer full screen video playback is:
+
+```as3
+if (AndroidFullScreen.hideSystemUI())
+{
+    stage.displayState = StageDisplayState.NORMAL;
+}
+else
+{
+    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
 ```
 
