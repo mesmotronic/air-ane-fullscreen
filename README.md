@@ -5,7 +5,7 @@ One of the most common complaints you hear from Adobe AIR developers is that the
 
 If you're one of those developers, then this AIR Native Extension (ANE) may be the solution you've been looking for. 
 
-This ANE requires Adobe AIR 13+.
+Released under BSD license and requires Adobe AIR 13+.
 
 Just give me the ANE!
 ---------------------
