@@ -26,10 +26,12 @@ If you need to fix it, fork it!
 
 This is a free, open-source project, so if you find the ANE doesn't work as you might like with a specific device, configuration or library you're using: fork it, fix it, let us know.
 
-stage.displayState
-------------------
+Before you start
+----------------
 
-Ensure that `stage.displayState = StageDisplayState.NORMAL` when using any method of this ANE to prevent Sprites and other DisplayObjects being cropped in the area where the navigation bar used to be.
+To avoid cropping, ensure that you're using `<fullScreen>false</fullScreen>` in your `app.xml` and `stage.displayState` is set to `StageDisplayState.NORMAL` when using any of the full screen modes invoked by this ANE.
+
+The examples below show how to achieve the best possible full screen experience.
 
 Code example
 ------------
