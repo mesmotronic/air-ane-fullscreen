@@ -1,4 +1,4 @@
-<extension xmlns="http://ns.adobe.com/air/extension/14.0">
+<extension xmlns="http://ns.adobe.com/air/extension/3.1">
 	<id>com.mesmotronic.ane.fullscreen</id>
 	<versionNumber>1.2.6</versionNumber>
 	<platforms>
