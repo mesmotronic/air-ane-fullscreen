@@ -35,13 +35,12 @@ import com.adobe.fre.FREExtension;
 
 public class FullScreenExtension implements FREExtension
 {
-
 	@Override
-	public FREContext createContext(String arg0) 
+	public FREContext createContext(String id) 
 	{
 		return new FullScreenContext();
 	}
-
+	
 	@Override
 	public void dispose() 
 	{
@@ -53,5 +52,4 @@ public class FullScreenExtension implements FREExtension
 	{
 		// Or here :-)
 	}
-
 }
