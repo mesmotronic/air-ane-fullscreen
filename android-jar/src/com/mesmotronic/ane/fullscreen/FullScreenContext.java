@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -33,18 +33,33 @@ package com.mesmotronic.ane.fullscreen;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.view.ActionMode;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.ActionMode.Callback;
+import android.view.WindowManager.LayoutParams;
+import android.view.accessibility.AccessibilityEvent;
+
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveHeightFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
+import com.mesmotronic.ane.fullscreen.functions.InitFunction;
 import com.mesmotronic.ane.fullscreen.functions.IsImmersiveModeSupportedFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
 
 public class FullScreenContext extends FREContext 
 {
+	private Window.Callback _windowCallback; 
+	
 	@Override
 	public void dispose() 
 	{
@@ -56,6 +71,7 @@ public class FullScreenContext extends FREContext
 	{
 		Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
 		
+		functions.put("init", new InitFunction());
 		functions.put("hideSystemUI", new HideSystemUiFunction());
 		functions.put("immersiveMode", new ImmersiveModeFunction());
 		functions.put("immersiveHeight", new ImmersiveHeightFunction());
@@ -65,5 +81,176 @@ public class FullScreenContext extends FREContext
 		functions.put("showUnderSystemUI", new ShowUnderSystemUiFunction());
 		
 		return functions;
+	}
+	
+	public Window getWindow()
+	{
+		return getActivity().getWindow();
+	}
+	
+	public Window.Callback getWindowCallback()
+	{
+		if (_windowCallback == null)
+		{
+			final Window.Callback windowCallback = getWindow().getCallback();
+			
+			_windowCallback = new Window.Callback()
+			{
+				@Override
+				public ActionMode onWindowStartingActionMode(Callback callback) 
+				{
+					return windowCallback.onWindowStartingActionMode(callback);
+				}
+				
+				@Override
+				public void onWindowFocusChanged(boolean hasFocus) 
+				{
+					String type = hasFocus
+						? "androidWindowFocusIn"
+						: "androidWindowFocusOut";
+					
+					dispatchStatusEventAsync(type, "");
+					
+					windowCallback.onWindowFocusChanged(hasFocus);
+				}
+				
+				@Override
+				public void onWindowAttributesChanged(LayoutParams attrs) 
+				{
+					windowCallback.onWindowAttributesChanged(attrs);
+				}
+				
+				@Override
+				public boolean onSearchRequested() 
+				{
+					return windowCallback.onSearchRequested();
+				}
+				
+				@Override
+				public boolean onPreparePanel(int featureId, View view, Menu menu) 
+				{
+					return windowCallback.onPreparePanel(featureId, view, menu);
+				}
+				
+				@Override
+				public void onPanelClosed(int featureId, Menu menu)
+				{
+					windowCallback.onPanelClosed(featureId, menu);
+				}
+				
+				@Override
+				public boolean onMenuOpened(int featureId, Menu menu) 
+				{
+					return windowCallback.onMenuOpened(featureId, menu);
+				}
+				
+				@Override
+				public boolean onMenuItemSelected(int featureId, MenuItem item) 
+				{
+					return windowCallback.onMenuItemSelected(featureId, item);
+				}
+				
+				@Override
+				public void onDetachedFromWindow() 
+				{
+					windowCallback.onDetachedFromWindow();
+				}
+				
+				@Override
+				public View onCreatePanelView(int featureId) 
+				{
+					return windowCallback.onCreatePanelView(featureId);
+				}
+				
+				@Override
+				public boolean onCreatePanelMenu(int featureId, Menu menu) 
+				{
+					return windowCallback.onCreatePanelMenu(featureId, menu);
+				}
+				
+				@Override
+				public void onContentChanged()
+				{
+					windowCallback.onContentChanged();
+				}
+				
+				@Override
+				public void onAttachedToWindow() 
+				{
+					windowCallback.onAttachedToWindow();
+				}
+				
+				@Override
+				public void onActionModeStarted(ActionMode mode)
+				{
+					windowCallback.onActionModeStarted(mode);
+				}
+				
+				@Override
+				public void onActionModeFinished(ActionMode mode) 
+				{
+					windowCallback.onActionModeFinished(mode);
+				}
+				
+				@Override
+				public boolean dispatchTrackballEvent(MotionEvent event) 
+				{
+					return windowCallback.dispatchTrackballEvent(event);
+				}
+				
+				@Override
+				public boolean dispatchTouchEvent(MotionEvent event) 
+				{
+					return windowCallback.dispatchTouchEvent(event);
+				}
+				
+				@Override
+				public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) 
+				{
+					return windowCallback.dispatchPopulateAccessibilityEvent(event);
+				}
+				
+				@Override
+				public boolean dispatchKeyShortcutEvent(KeyEvent event) 
+				{
+					return windowCallback.dispatchKeyShortcutEvent(event);
+				}
+				
+				@Override
+				public boolean dispatchKeyEvent(KeyEvent event) 
+				{
+					return windowCallback.dispatchKeyShortcutEvent(event);
+				}
+				
+				@Override
+				public boolean dispatchGenericMotionEvent(MotionEvent event) 
+				{
+					return windowCallback.dispatchGenericMotionEvent(event);
+				}
+			};
+		}
+		
+		return _windowCallback;
+	}
+	
+	public View getDecorView()
+	{
+		return getWindow().getDecorView();
+	}
+	
+	public void setSystemUiVisibility(int visibility)
+	{
+		getDecorView().setSystemUiVisibility(visibility);
+	}
+	
+	public void resetWindow()
+	{
+		final Window window = getWindow();
+		final Window.Callback windowCallback = getWindowCallback();
+		
+		window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		
+		window.setCallback(getWindowCallback()); 
+
 	}
 }

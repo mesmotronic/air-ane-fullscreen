@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -32,12 +32,11 @@ package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+import com.mesmotronic.ane.fullscreen.FullScreenContext;
 
 public class ShowSystemUiFunction implements FREFunction 
 {
@@ -52,18 +51,10 @@ public class ShowSystemUiFunction implements FREFunction
 		
 		try
 		{
-			// Remove translucent theme from bars
+			final FullScreenContext fsc = (FullScreenContext) context;
 			
-			Window window = context.getActivity().getWindow();
-			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-	        
-	        // Update system UI
-	        
-			View decorView = window.getDecorView();
-			
-			decorView.setOnFocusChangeListener(null);
-			decorView.setOnSystemUiVisibilityChangeListener(null);
-			decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+			fsc.resetWindow();
+			fsc.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 		}
 		catch (Exception e0)
 		{

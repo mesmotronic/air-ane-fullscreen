@@ -1,5 +1,7 @@
 @echo off
 
+copy ..\android-jar\bin\fullscreen-ane-jar.jar android
+
 adt ^
  -package ^
  -target ane ./AndroidFullScreen.ane extension.xml ^

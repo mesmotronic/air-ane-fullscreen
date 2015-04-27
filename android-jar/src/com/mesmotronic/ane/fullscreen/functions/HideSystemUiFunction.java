@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -36,6 +36,7 @@ import android.view.View;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+import com.mesmotronic.ane.fullscreen.FullScreenContext;
 
 public class HideSystemUiFunction implements FREFunction 
 {
@@ -50,15 +51,14 @@ public class HideSystemUiFunction implements FREFunction
 		
 		try
 		{
-			View decorView = context.getActivity().getWindow().getDecorView();
+			final FullScreenContext fsc = (FullScreenContext) context;
 			
 			int uiOptions = 
 				View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_FULLSCREEN;
 			
-			decorView.setOnFocusChangeListener(null);
-			decorView.setOnSystemUiVisibilityChangeListener(null);
-			decorView.setSystemUiVisibility(uiOptions);
+			fsc.resetWindow();
+			fsc.setSystemUiVisibility(uiOptions);
 		}
 		catch (Exception e0)
 		{

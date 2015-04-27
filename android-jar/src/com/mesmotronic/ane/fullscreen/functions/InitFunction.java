@@ -30,54 +30,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.mesmotronic.ane.fullscreen.functions;
 
-import android.os.Build;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.mesmotronic.ane.fullscreen.FullScreenContext;
 
-public class ShowUnderSystemUiFunction implements FREFunction 
+public class InitFunction implements FREFunction 
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 
 	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
-		{
-			try { return FREObject.newObject(false); }
-			catch (Exception e1) { return null; }
-		}
+		FullScreenContext fsc = (FullScreenContext) context;
 		
-		try
-		{
-			final FullScreenContext fsc = (FullScreenContext) context; 
-			final Window window = fsc.getWindow();
-			
-			fsc.resetWindow();
-			
-			// Extend view underneath translucent status and nav bars
-			
-			int uiOptions = 
-					View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-					| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-			
-			window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-			window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			
-			fsc.setSystemUiVisibility(uiOptions);
-		}
-		catch (Exception e0)
-		{
-			try { return FREObject.newObject(false); }
-			catch (Exception e1) { return null; }
-		}
-		
-		try { return FREObject.newObject(true); }
-		catch (Exception e2) {}
+		// Enables window focus change events
+		fsc.resetWindow();
 		
 		return null;
 	}

@@ -1,6 +1,6 @@
 /*
 
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -34,6 +34,7 @@ package
 {
 	import com.mesmotronic.ane.AndroidFullScreen;
 	
+	import flash.desktop.NativeApplication;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
@@ -49,6 +50,9 @@ package
 		public function AndroidFullScreenTest()
 		{
 			super();
+			
+			NativeApplication.nativeApplication.addEventListener(AndroidFullScreen.ANDROID_WINDOW_FOCUS_IN, focusHandler);
+			NativeApplication.nativeApplication.addEventListener(AndroidFullScreen.ANDROID_WINDOW_FOCUS_OUT, focusHandler);
 			
 			var textField:TextField;
 			
@@ -74,6 +78,11 @@ package
 			textField.y = 10;
 			
 			addChild(textField);
+		}
+		
+		protected function focusHandler(event:Event):void
+		{
+			trace(event.type);
 		}
 
 	}

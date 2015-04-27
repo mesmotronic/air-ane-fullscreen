@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -31,6 +31,9 @@ package com.mesmotronic.ane
 {
 	public class AndroidFullScreen
 	{
+		static public const ANDROID_WINDOW_FOCUS_IN:String = 'androidWindowFocusIn';
+		static public const ANDROID_WINDOW_FOCUS_OUT:String = 'androidWindowFocusOut';
+		
 		static public function get isSupported():Boolean
 		{
 			return false;

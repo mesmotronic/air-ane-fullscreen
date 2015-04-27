@@ -7,3 +7,7 @@
 /fullscreen-ane-example-as3/extensions
 /fullscreen-ane-example-as3-fd/extensions/AndroidFullScreen.ane
 .settings
+/example-flashdevelop/obj
+/example-flashdevelop/extensions
+/example-flashdevelop/bin
+/example-flashdevelop/dist
