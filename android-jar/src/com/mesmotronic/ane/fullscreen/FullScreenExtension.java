@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2015, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -35,21 +35,24 @@ import com.adobe.fre.FREExtension;
 
 public class FullScreenExtension implements FREExtension
 {
+	private FullScreenContext context;
+	
 	@Override
 	public FREContext createContext(String id) 
 	{
-		return new FullScreenContext();
+		context = new FullScreenContext();
+		return context;
 	}
 	
 	@Override
 	public void dispose() 
 	{
-		// Nothing to do here ;-)
+		context = null;
 	}
-
+	
 	@Override
 	public void initialize() 
 	{
-		// Or here :-)
+		//
 	}
 }

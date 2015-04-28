@@ -62,8 +62,6 @@ public class ImmersiveModeFunction implements FREFunction
 		try
 		{
 			final FullScreenContext fsc = (FullScreenContext) context; 
-			final Window window = fsc.getWindow();
-			final Window.Callback windowCallback = fsc.getWindowCallback();
 			
 			Boolean isSticky = true;
 			
@@ -90,6 +88,33 @@ public class ImmersiveModeFunction implements FREFunction
 			
 			if (isSticky)
 			{
+				// If it's sticky, we add listeners to ensure immersive mode is maintained
+				
+				final View decorView = fsc.getDecorView();
+				final Window window = fsc.getWindow();
+				final Window.Callback windowCallback = fsc.getWindowCallback();
+				
+				decorView.setOnFocusChangeListener(new View.OnFocusChangeListener() 
+				{
+					@Override
+					public void onFocusChange(View v, boolean hasFocus) 
+					{
+						if (hasFocus)
+						{
+							fsc.setSystemUiVisibility(uiOptions);
+						}
+					}
+				});
+				
+				decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+				{
+					@Override
+					public void onSystemUiVisibilityChange(int visibility) 
+					{
+						fsc.setSystemUiVisibility(uiOptions);
+					}
+				});
+				
 				window.setCallback(new Window.Callback()
 				{
 					@Override
@@ -222,7 +247,8 @@ public class ImmersiveModeFunction implements FREFunction
 					{
 						return windowCallback.dispatchGenericMotionEvent(event);
 					}
-				}); 
+				});
+				
 			}
 		}
 		catch (Exception e0)

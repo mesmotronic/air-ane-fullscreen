@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.view.ActionMode;
+import android.view.ActionMode.Callback;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,15 +42,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.ActionMode.Callback;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
+import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveHeightFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
-import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
 import com.mesmotronic.ane.fullscreen.functions.InitFunction;
 import com.mesmotronic.ane.fullscreen.functions.IsImmersiveModeSupportedFunction;
@@ -245,12 +245,14 @@ public class FullScreenContext extends FREContext
 	
 	public void resetWindow()
 	{
+		final View decorView = getDecorView();
 		final Window window = getWindow();
 		final Window.Callback windowCallback = getWindowCallback();
 		
-		window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		decorView.setOnFocusChangeListener(null);
+		decorView.setOnSystemUiVisibilityChangeListener(null);
 		
+		window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 		window.setCallback(getWindowCallback()); 
-
 	}
 }

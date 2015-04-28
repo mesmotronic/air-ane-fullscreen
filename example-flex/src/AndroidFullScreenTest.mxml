@@ -129,4 +129,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		width="75%"
 		/>
 	
+	<s:Label 
+		text="Test" 
+		verticalAlign="middle"
+		height="30"
+		/>
+	
+	<s:TextInput 
+		width="75%"
+		/>
+	
 </s:Application>
