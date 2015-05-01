@@ -66,8 +66,8 @@ package
 			
 			stage.addEventListener(MouseEvent.CLICK, function(e:Event):void
 			{
-				// If immersiveMode() doesn't work, try hideSystemUI()
-				AndroidFullScreen.immersiveMode() || AndroidFullScreen.hideSystemUI();
+				// If immersiveMode() doesn't work, try leanMode()
+				AndroidFullScreen.immersiveMode() || AndroidFullScreen.leanMode();
 			});
 			
 			textField = new TextField();

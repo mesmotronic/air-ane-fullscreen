@@ -67,10 +67,10 @@ package com.mesmotronic.ane
 		 * Hides the system status and navigation bars
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */
-		static public function hideSystemUI():Boolean
+		static public function leanMode():Boolean
 		{
 			if (!context) return false;
-			return context.call('hideSystemUI');
+			return context.call('leanMode');
 		}
 		
 		/**

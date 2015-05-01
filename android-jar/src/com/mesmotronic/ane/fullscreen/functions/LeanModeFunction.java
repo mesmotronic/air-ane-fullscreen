@@ -38,7 +38,7 @@ import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.mesmotronic.ane.fullscreen.FullScreenContext;
 
-public class HideSystemUiFunction implements FREFunction 
+public class LeanModeFunction implements FREFunction 
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) 

@@ -89,8 +89,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		/>
 	
 	<s:Button 
-		label="hideSystemUI()"
-		click="AndroidFullScreen.hideSystemUI()"
+		label="leanMode()"
+		click="AndroidFullScreen.leanMode()"
 		enabled="{AndroidFullScreen.isSupported}"
 		width="75%"
 		/>

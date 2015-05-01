@@ -47,7 +47,7 @@ import android.view.accessibility.AccessibilityEvent;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.mesmotronic.ane.fullscreen.functions.HideSystemUiFunction;
+import com.mesmotronic.ane.fullscreen.functions.LeanModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveHeightFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
@@ -72,7 +72,7 @@ public class FullScreenContext extends FREContext
 		Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
 		
 		functions.put("init", new InitFunction());
-		functions.put("hideSystemUI", new HideSystemUiFunction());
+		functions.put("leanMode", new LeanModeFunction());
 		functions.put("immersiveMode", new ImmersiveModeFunction());
 		functions.put("immersiveHeight", new ImmersiveHeightFunction());
 		functions.put("immersiveWidth", new ImmersiveWidthFunction());

@@ -48,7 +48,7 @@ AndroidFullScreen.isImmersiveModeSupported; // Is immersive mode supported?
 AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
 AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
 
-AndroidFullScreen.hideSystemUI(); // Hide system UI until user interacts
+AndroidFullScreen.leanMode(); // Hide system UI until user interacts
 AndroidFullScreen.showSystemUI(); // Show system UI
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
@@ -99,7 +99,7 @@ else
 And a great way to offer full screen video playback is:
 
 ```as3
-if (AndroidFullScreen.hideSystemUI())
+if (AndroidFullScreen.leanMode())
 {
     stage.displayState = StageDisplayState.NORMAL;
 }
@@ -114,7 +114,7 @@ Getting the immersive screen size
 
 You can use the `immersiveWidth` and `immersiveHeight` properties to find out the dimensions of the screen with the system UI hidden, regardless of the current screen state.
 
-To find out the stage size after calling `immersiveMode()` or `hideSystemUI()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
+To find out the stage size after calling `immersiveMode()` or `leanMode()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
 
 Starling
 --------
