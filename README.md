@@ -48,8 +48,8 @@ AndroidFullScreen.isImmersiveModeSupported; // Is immersive mode supported?
 AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
 AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
 
-AndroidFullScreen.leanMode(); // Hide system UI until user interacts
 AndroidFullScreen.showSystemUI(); // Show system UI
+AndroidFullScreen.leanMode(); // Hide system UI until user interacts
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
