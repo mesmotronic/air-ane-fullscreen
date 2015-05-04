@@ -40,6 +40,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -58,7 +59,8 @@ import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
 
 public class FullScreenContext extends FREContext 
 {
-	private Window.Callback _windowCallback; 
+	private Window.Callback _windowCallback;
+	private OnFocusChangeListener _onFocusChangeListener; 
 	
 	@Override
 	public void dispose() 
@@ -219,7 +221,7 @@ public class FullScreenContext extends FREContext
 				@Override
 				public boolean dispatchKeyEvent(KeyEvent event) 
 				{
-					return windowCallback.dispatchKeyShortcutEvent(event);
+					return windowCallback.dispatchKeyEvent(event);
 				}
 				
 				@Override
@@ -233,6 +235,16 @@ public class FullScreenContext extends FREContext
 		return _windowCallback;
 	}
 	
+	public View.OnFocusChangeListener getOnFocusChangeListener()
+	{
+		if (_onFocusChangeListener == null)
+		{
+			_onFocusChangeListener = getDecorView().getOnFocusChangeListener();
+		}
+		
+		return _onFocusChangeListener; 
+	}
+	
 	public View getDecorView()
 	{
 		return getWindow().getDecorView();
@@ -243,16 +255,32 @@ public class FullScreenContext extends FREContext
 		getDecorView().setSystemUiVisibility(visibility);
 	}
 	
-	public void resetWindow()
+	public void init()
+	{
+		getWindow().setCallback(getWindowCallback()); 
+	}
+	
+	/**
+	 * Resets UI and window handlers to default state 
+	 */
+	public void resetUi()
 	{
 		final View decorView = getDecorView();
 		final Window window = getWindow();
-		final Window.Callback windowCallback = getWindowCallback();
 		
-		decorView.setOnFocusChangeListener(null);
+		decorView.setOnFocusChangeListener(getOnFocusChangeListener());
 		decorView.setOnSystemUiVisibilityChangeListener(null);
 		
-		window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-		window.setCallback(getWindowCallback()); 
+		window.clearFlags
+		(
+			WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN
+			| WindowManager.LayoutParams.FLAG_FULLSCREEN
+			| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION 
+			| WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+		);
+		
+		init(); 
+		
+		setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 	}
 }

@@ -56,7 +56,7 @@ public class ShowUnderSystemUiFunction implements FREFunction
 			final FullScreenContext fsc = (FullScreenContext) context; 
 			final Window window = fsc.getWindow();
 			
-			fsc.resetWindow();
+			fsc.resetUi();
 			
 			// Extend view underneath translucent status and nav bars
 			

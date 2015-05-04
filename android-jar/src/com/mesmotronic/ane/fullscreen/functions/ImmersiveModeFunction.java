@@ -83,7 +83,7 @@ public class ImmersiveModeFunction implements FREFunction
 				| View.SYSTEM_UI_FLAG_FULLSCREEN
 				| immersive;
 			
-			fsc.resetWindow();
+			fsc.resetUi();
 			fsc.setSystemUiVisibility(uiOptions);
 			
 			if (isSticky)
@@ -103,6 +103,8 @@ public class ImmersiveModeFunction implements FREFunction
 						{
 							fsc.setSystemUiVisibility(uiOptions);
 						}
+						
+						fsc.getOnFocusChangeListener().onFocusChange(v, hasFocus);
 					}
 				});
 				
@@ -239,7 +241,7 @@ public class ImmersiveModeFunction implements FREFunction
 					@Override
 					public boolean dispatchKeyEvent(KeyEvent event) 
 					{
-						return windowCallback.dispatchKeyShortcutEvent(event);
+						return windowCallback.dispatchKeyEvent(event);
 					}
 					
 					@Override

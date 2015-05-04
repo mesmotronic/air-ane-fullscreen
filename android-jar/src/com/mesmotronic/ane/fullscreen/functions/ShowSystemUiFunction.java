@@ -31,7 +31,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
-import android.view.View;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -53,8 +52,7 @@ public class ShowSystemUiFunction implements FREFunction
 		{
 			final FullScreenContext fsc = (FullScreenContext) context;
 			
-			fsc.resetWindow();
-			fsc.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+			fsc.resetUi();
 		}
 		catch (Exception e0)
 		{

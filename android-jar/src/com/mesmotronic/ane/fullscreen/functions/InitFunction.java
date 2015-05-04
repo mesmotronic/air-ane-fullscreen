@@ -42,8 +42,8 @@ public class InitFunction implements FREFunction
 	{
 		FullScreenContext fsc = (FullScreenContext) context;
 		
-		// Enables window focus change events
-		fsc.resetWindow();
+		// Enable window focus change events
+		fsc.init();
 		
 		return null;
 	}

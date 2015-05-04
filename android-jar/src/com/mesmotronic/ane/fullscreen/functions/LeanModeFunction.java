@@ -57,7 +57,7 @@ public class LeanModeFunction implements FREFunction
 				View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 				| View.SYSTEM_UI_FLAG_FULLSCREEN;
 			
-			fsc.resetWindow();
+			fsc.resetUi();
 			fsc.setSystemUiVisibility(uiOptions);
 		}
 		catch (Exception e0)
