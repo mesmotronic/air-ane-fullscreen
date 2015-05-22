@@ -29,7 +29,7 @@ This is a free, open-source project, so if you find the ANE doesn't work as you 
 Before you start
 ----------------
 
-To avoid cropping, ensure that you're using `<fullScreen>false</fullScreen>` in your `app.xml` and `stage.displayState` is set to `StageDisplayState.NORMAL` when using any of the full screen modes invoked by this ANE.
+To avoid cropping, always ensure that you're using `<fullScreen>false</fullScreen>` in your `app.xml` and `stage.displayState` is set to `StageDisplayState.NORMAL` when using any of the full screen modes invoked by this ANE.
 
 The examples below show how to achieve the best possible full screen experience.
 
@@ -54,7 +54,7 @@ AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system 
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
 
-// Events
+// Events (will only work if ANE is supported)
 
 NativeApplication.nativeApplication.addEventListener(AndroidFullScreen.ANDROID_WINDOW_FOCUS_IN, focusHandler);
 NativeApplication.nativeApplication.addEventListene(AndroidFullScreen.ANDROID_WINDOW_FOCUS_OUT, focusHandler);
@@ -70,14 +70,10 @@ All methods return Boolean values: *true* if the action was successful, *false* 
 
 The `immersiveWidth` and `immersiveHeight` properties return the screen width and height available in immersive mode (or with the system UI hidden), or 0 if the ANE isn't supported.
 
-Therefore, the simplest way to give users the best possible interactive full screen experience in your app is:
+Therefore, the simplest way to give users the best possible interactive full screen experience in your app is to start your app with `<fullScreen>false</fullScreen>` in your `app.xml` and use:
 
 ```as3
-if (AndroidFullScreen.immersiveMode())
-{
-    stage.displayState = StageDisplayState.NORMAL;
-}
-else
+if (!AndroidFullScreen.immersiveMode())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
@@ -86,11 +82,7 @@ else
 An easy way to extend your app underneath the status and navigation bars is:
 
 ```as3
-if (AndroidFullScreen.showUnderSystemUI())
-{
-    stage.displayState = StageDisplayState.NORMAL;
-}
-else
+if (!AndroidFullScreen.showUnderSystemUI())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
@@ -99,11 +91,7 @@ else
 And a great way to offer full screen video playback is:
 
 ```as3
-if (AndroidFullScreen.leanMode())
-{
-    stage.displayState = StageDisplayState.NORMAL;
-}
-else
+if (!AndroidFullScreen.leanMode())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 }
