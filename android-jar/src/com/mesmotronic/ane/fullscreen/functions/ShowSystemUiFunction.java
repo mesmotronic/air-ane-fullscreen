@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.mesmotronic.ane.fullscreen.functions;
 
 import android.os.Build;
+import android.view.WindowManager;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -53,6 +54,13 @@ public class ShowSystemUiFunction implements FREFunction
 			final FullScreenContext fsc = (FullScreenContext) context;
 			
 			fsc.resetUi();
+			
+			fsc.getWindow().clearFlags
+			(
+				WindowManager.LayoutParams.FLAG_FULLSCREEN
+				| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION 
+				| WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+			);
 		}
 		catch (Exception e0)
 		{

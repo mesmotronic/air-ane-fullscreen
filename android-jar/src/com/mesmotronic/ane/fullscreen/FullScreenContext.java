@@ -266,18 +266,9 @@ public class FullScreenContext extends FREContext
 	public void resetUi()
 	{
 		final View decorView = getDecorView();
-		final Window window = getWindow();
 		
 		decorView.setOnFocusChangeListener(getOnFocusChangeListener());
 		decorView.setOnSystemUiVisibilityChangeListener(null);
-		
-		window.clearFlags
-		(
-			WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN
-			| WindowManager.LayoutParams.FLAG_FULLSCREEN
-			| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION 
-			| WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-		);
 		
 		init(); 
 		

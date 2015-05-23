@@ -2,7 +2,7 @@
 
 copy ..\android-jar\bin\fullscreen-ane-jar.jar android
 
-adt ^
+call adt ^
  -package ^
  -target ane ./AndroidFullScreen.ane extension.xml ^
  -swc swc/fullscreen-ane-android.swc ^

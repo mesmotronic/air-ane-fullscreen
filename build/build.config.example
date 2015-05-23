@@ -1,0 +1,7 @@
+name = AndroidFullScreen
+name.jar = fullscreen-ane-jar
+
+flex.sdk = Your path to flex sdk for example i am using D:/programs/FlashDevelop/Apps/ascsdk/17.0.0
+flex.sdk.ext = .bat
+
+android.sdk = Your path to adt for example i am using D:/programs/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19
