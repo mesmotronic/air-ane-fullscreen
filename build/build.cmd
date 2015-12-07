@@ -1,6 +1,6 @@
 @echo off
 
-copy ..\android-jar\bin\fullscreen-ane-jar.jar android
+copy ..\jar-android\bin\fullscreen-ane-jar.jar android
 
 call adt ^
  -package ^

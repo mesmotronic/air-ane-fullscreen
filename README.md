@@ -10,7 +10,7 @@ Released under BSD license. Requires Adobe AIR 17+.
 Just give me the ANE!
 ---------------------
 
-If you don't care about the source code and just want to download the latest, ready-built ANE, click the [releases link](https://github.com/mesmotronic/air-fullscreen-ane/releases) at the top of this project's page on GitHub.
+If you don't care about the source code and just want to download the latest, ready-built ANE, click the [releases link](https://github.com/mesmotronic/air-ane-fullscreen/releases) at the top of this project's page on GitHub.
 
 How does it work?
 -----------------

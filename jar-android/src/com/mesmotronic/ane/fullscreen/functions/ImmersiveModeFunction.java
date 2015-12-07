@@ -36,6 +36,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.ActionMode.Callback;
@@ -120,6 +121,12 @@ public class ImmersiveModeFunction implements FREFunction
 				window.setCallback(new Window.Callback()
 				{
 					@Override
+					public ActionMode onWindowStartingActionMode(Callback callback, int i)
+					{
+						return windowCallback.onWindowStartingActionMode(callback, i);
+					}
+					
+					@Override
 					public ActionMode onWindowStartingActionMode(Callback callback) 
 					{
 						return windowCallback.onWindowStartingActionMode(callback);
@@ -140,6 +147,12 @@ public class ImmersiveModeFunction implements FREFunction
 					public void onWindowAttributesChanged(LayoutParams attrs) 
 					{
 						windowCallback.onWindowAttributesChanged(attrs);
+					}
+					
+					@Override
+					public boolean onSearchRequested(SearchEvent event) 
+					{
+						return windowCallback.onSearchRequested(event);
 					}
 					
 					@Override
