@@ -5,7 +5,9 @@ One of the most common complaints you hear from Adobe AIR developers is that the
 
 If you're one of those developers, then this AIR Native Extension (ANE) may be the solution you've been looking for. 
 
-Released under BSD license. Requires Adobe AIR 17+.
+Released under BSD license. Requires Adobe AIR 20+.
+
+**If you only need immersive mode, we recommend using our [Immersive Mode ANE](https://github.com/mesmotronic/air-ane-immersivemode) instead.**
 
 Just give me the ANE!
 ---------------------
