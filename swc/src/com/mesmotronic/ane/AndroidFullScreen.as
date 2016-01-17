@@ -31,21 +31,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.mesmotronic.ane
 {
 	import flash.desktop.NativeApplication;
+	import flash.display.Stage;
+	import flash.display.StageDisplayState;
 	import flash.events.Event;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
+	import flash.system.Capabilities;
 	
 	public class AndroidFullScreen
 	{
 		static public const ANDROID_WINDOW_FOCUS_IN:String = 'androidWindowFocusIn';
 		static public const ANDROID_WINDOW_FOCUS_OUT:String = 'androidWindowFocusOut';
 		
+		static public var stage:Stage;
+		
+		static private var context:ExtensionContext;
+		
 		// Static initializer
 		{
 			init();
 		}
-		
-		static private var context:ExtensionContext;
 		
 		static private function init():void
 		{
@@ -64,12 +69,58 @@ package com.mesmotronic.ane
 		}
 		
 		/**
+		 * Switches to the best available full screen mode: immersive mode in Android 4.4+ or
+		 * standard full screen mode for Android <4.4 or non-Android OS
+		 * 
+		 * @return		Boolean		true if the display state was changed, false if it wasn't
+		 */
+		static public function fullScreen():Boolean
+		{
+			try
+			{
+				if (!immersiveMode())
+				{
+					stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				}
+				
+				return true;
+			}
+			catch (e:Error)
+			{
+				throwStageError();
+			}
+			
+			return false;
+		}
+		
+		/**
+		 * The width of the screen in the best available full screen mode
+		 * @return		int
+		 */
+		static public function get fullScreenWidth():int
+		{
+			return immersiveWidth
+			|| Capabilities.screenResolutionX;
+		}
+		
+		/**
+		 * The height of the screen in the best available full screen mode
+		 * @return		int
+		 */
+		static public function get fullScreenHeight():int
+		{
+			return immersiveHeight 
+				|| Capabilities.screenResolutionY;
+		}
+		
+		
+		/**
 		 * Hides the system status and navigation bars
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */
 		static public function leanMode():Boolean
 		{
-			if (!context) return false;
+			if (!isSupported) return false;
 			return context.call('leanMode');
 		}
 		
@@ -81,18 +132,8 @@ package com.mesmotronic.ane
 		 */
 		static public function immersiveMode(sticky:Boolean=true):Boolean
 		{
-			if (!context) return false;
+			if (!isSupported) return false;
 			return context.call('immersiveMode', sticky);
-		}
-		
-		/**
-		 * The height of the screen in immersive mode, or 0 if immersive mode is not supported
-		 * @return		int
-		 */
-		static public function get immersiveHeight():int
-		{
-			if (!context) return 0;
-			return context.call('immersiveHeight') as int;
 		}
 		
 		/**
@@ -101,8 +142,18 @@ package com.mesmotronic.ane
 		 */
 		static public function get immersiveWidth():int
 		{
-			if (!context) return 0;
+			if (!isSupported) return 0;
 			return context.call('immersiveWidth') as int;
+		}
+		
+		/**
+		 * The height of the screen in immersive mode, or 0 if immersive mode is not supported
+		 * @return		int
+		 */
+		static public function get immersiveHeight():int
+		{
+			if (!isSupported) return 0;
+			return context.call('immersiveHeight') as int;
 		}
 		
 		/**
@@ -112,7 +163,7 @@ package com.mesmotronic.ane
 		 */
 		static public function get isImmersiveModeSupported():Boolean
 		{
-			if (!context) return false;
+			if (!isSupported) return false;
 			return context.call('isImmersiveModeSupported');
 		}
 		
@@ -122,7 +173,20 @@ package com.mesmotronic.ane
 		 */
 		static public function showSystemUI():Boolean
 		{
-			if (!context) return false;
+			if (!isSupported)
+			{
+				try
+				{
+					stage.displayState = StageDisplayState.NORMAL;
+					return true;
+				}
+				catch (e:Error)
+				{
+					throwStageError();
+					return false;
+				}
+			}
+			
 			return context.call('showSystemUI');
 		}
 		
@@ -132,7 +196,7 @@ package com.mesmotronic.ane
 		 */
 		static public function showUnderSystemUI():Boolean
 		{
-			if (!context) return false;
+			if (!isSupported) return false;
 			return context.call('showUnderSystemUI');
 		}
 		
@@ -142,6 +206,11 @@ package com.mesmotronic.ane
 		private static function context_statusHandler(event:StatusEvent):void
 		{
 			NativeApplication.nativeApplication.dispatchEvent(new Event(event.code));
+		}
+		
+		private static function throwStageError():void
+		{
+			throw new Error('AndroidFullScreen.stage is undefined: you need to set it to the current Stage before calling AndroidFullScreen.fullScreen()');
 		}
 	}
 }

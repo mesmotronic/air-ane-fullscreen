@@ -75,6 +75,13 @@ The `immersiveWidth` and `immersiveHeight` properties return the screen width an
 Therefore, the simplest way to give users the best possible interactive full screen experience in your app is to start your app with `<fullScreen>false</fullScreen>` in your `app.xml` and use:
 
 ```as3
+// ANE v1.4.0+ can automatically switch your app into the best available full screen mode
+
+AndroidFullScreen.stage = stage;
+AndroidFullScreen.fullScreen();
+
+// ANE v1.3.x
+
 if (!AndroidFullScreen.immersiveMode())
 {
     stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
@@ -104,7 +111,7 @@ Getting the immersive screen size
 
 You can use the `immersiveWidth` and `immersiveHeight` properties to find out the dimensions of the screen with the system UI hidden, regardless of the current screen state.
 
-To find out the stage size after calling `immersiveMode()` or `leanMode()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
+To find out the stage size after calling `fullScreen()`, `immersiveMode()` or `leanMode()`, you must wait until the next `RESIZE` event before the `stage.stageWidth` and `stage.stageHeight` properties are updated; the properties of the `Capabilities` object are not updated and are therefore incorrect.
 
 Starling
 --------

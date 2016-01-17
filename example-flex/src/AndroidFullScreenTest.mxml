@@ -47,6 +47,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			import mx.events.FlexEvent;
 			import mx.events.ResizeEvent;
 			
+			protected function addedToStageHandler(event:Event):void
+			{
+				AndroidFullScreen.stage = stage;
+			}
+			
 			protected function preinitializeHandler(event:FlexEvent):void
 			{
 				NativeApplication.nativeApplication.addEventListener(AndroidFullScreen.ANDROID_WINDOW_FOCUS_IN, focusHandler);
@@ -60,22 +65,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			
 			protected function resizeHandler(event:ResizeEvent):void
 			{
-				trace("Application:", width, "x", height);
-			}
-			
-			protected function addedToStageHandler(event:Event):void
-			{
-				stage.addEventListener(Event.RESIZE, function(e:Event):void
+				if (stage)
 				{
 					trace("stage:", stage.stageWidth, "x", stage.stageHeight);
-				});
-				
-				stage.addEventListener(KeyboardEvent.KEY_DOWN, backHandler);
-			}
-			
-			protected function backHandler(event:KeyboardEvent):void
-			{
-				trace(event.keyCode);
+				}
 			}
 			
 		]]>
@@ -88,6 +81,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			gap="5" 
 			/>
 	</s:layout>
+	
+	<s:Label 
+		text="Any OS" 
+		verticalAlign="middle"
+		height="30"
+		/>
+	
+	<s:Button 
+		label="fullScreen()"
+		click="AndroidFullScreen.fullScreen()"
+		width="75%"
+		/>
 	
 	<s:Label 
 		text="Android 4.0+" 

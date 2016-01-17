@@ -114,11 +114,19 @@ public class FullScreenContext extends FREContext
 				@Override
 				public void onWindowFocusChanged(boolean hasFocus) 
 				{
-					String type = hasFocus
-						? "androidWindowFocusIn"
-						: "androidWindowFocusOut";
-					
-					dispatchStatusEventAsync(type, "");
+					// try...catch to resolve issue #25
+					try
+					{
+						String type = hasFocus
+							? "androidWindowFocusIn"
+							: "androidWindowFocusOut";
+						
+						dispatchStatusEventAsync(type, "");
+					}
+					catch (Exception e)
+					{
+						// Ignore errors
+					}
 					
 					windowCallback.onWindowFocusChanged(hasFocus);
 				}
