@@ -45,11 +45,15 @@ import com.mesmotronic.ane.AndroidFullScreen;
 
 // Methods
 
+AndroidFullScreen.stage = stage; // Set this to your app's stage
 AndroidFullScreen.isSupported; // Is this ANE supported?
 AndroidFullScreen.isImmersiveModeSupported; // Is immersive mode supported?
 AndroidFullScreen.immersiveWidth; // The width of the screen in immersive mode
 AndroidFullScreen.immersiveHeight; // The height of the screen in immersive mode
+AndroidFullScreen.fullScreenWidth; // The width of the screen in the best available full screen mode
+AndroidFullScreen.fullScreenHeight; // The height of the screen in the best available full screen mode
 
+AndroidFullScreen.fullScreen(); // Switch your app to the best available full screen mode
 AndroidFullScreen.showSystemUI(); // Show system UI
 AndroidFullScreen.leanMode(); // Hide system UI until user interacts
 AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system UI (Android 4.4+ only)
