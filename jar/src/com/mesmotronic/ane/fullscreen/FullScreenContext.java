@@ -43,18 +43,17 @@ import android.view.SearchEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.mesmotronic.ane.fullscreen.functions.LeanModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveHeightFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
 import com.mesmotronic.ane.fullscreen.functions.InitFunction;
 import com.mesmotronic.ane.fullscreen.functions.IsImmersiveModeSupportedFunction;
+import com.mesmotronic.ane.fullscreen.functions.LeanModeFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
 
@@ -88,7 +87,16 @@ public class FullScreenContext extends FREContext
 	
 	public Window getWindow()
 	{
-		return getActivity().getWindow();
+		// Using try...catch as quick fixes for #26
+		// TODO Should probably swap out try...catch statements for check against null when time permits
+		try
+		{
+			return getActivity().getWindow();
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
 	}
 	
 	public Window.Callback getWindowCallback()
@@ -268,17 +276,38 @@ public class FullScreenContext extends FREContext
 	
 	public View getDecorView()
 	{
-		return getWindow().getDecorView();
+		try
+		{
+			return getWindow().getDecorView();
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
 	}
 	
 	public void setSystemUiVisibility(int visibility)
 	{
-		getDecorView().setSystemUiVisibility(visibility);
+		try
+		{
+			getDecorView().setSystemUiVisibility(visibility);
+		}
+		catch (Exception e)
+		{
+			// Ignore errors
+		}
 	}
 	
 	public void init()
 	{
-		getWindow().setCallback(getWindowCallback()); 
+		try
+		{
+			getWindow().setCallback(getWindowCallback());
+		}
+		catch (Exception e)
+		{
+			// Ignore errors
+		}
 	}
 	
 	/**
@@ -288,8 +317,11 @@ public class FullScreenContext extends FREContext
 	{
 		final View decorView = getDecorView();
 		
-		decorView.setOnFocusChangeListener(getOnFocusChangeListener());
-		decorView.setOnSystemUiVisibilityChangeListener(null);
+		if (decorView != null)
+		{
+			decorView.setOnFocusChangeListener(getOnFocusChangeListener());
+			decorView.setOnSystemUiVisibilityChangeListener(null);
+		}
 		
 		init(); 
 		
