@@ -100,7 +100,7 @@ package com.mesmotronic.ane
 		static public function get fullScreenWidth():int
 		{
 			return immersiveWidth
-			|| Capabilities.screenResolutionX;
+				|| Capabilities.screenResolutionX;
 		}
 		
 		/**

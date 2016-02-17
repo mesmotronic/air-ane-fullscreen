@@ -13,7 +13,7 @@
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
-		<renderMode>direct</renderMode>
+		<renderMode>cpu</renderMode>
     </initialWindow>
 	
 	<android>
