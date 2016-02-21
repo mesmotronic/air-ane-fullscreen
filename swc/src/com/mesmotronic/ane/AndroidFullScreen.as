@@ -88,7 +88,15 @@ package com.mesmotronic.ane
 		{
 			try
 			{
-				if (!immersiveMode())
+				
+				if (immersiveMode())
+				{
+					if (stage)
+					{
+						stage.displayState = StageDisplayState.NORMAL;
+					}
+				}
+				else
 				{
 					stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 				}
@@ -193,7 +201,6 @@ package com.mesmotronic.ane
 				catch (e:Error)
 				{
 					throwStageError();
-					return false;
 				}
 			}
 			
