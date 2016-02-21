@@ -88,15 +88,7 @@ package com.mesmotronic.ane
 		{
 			try
 			{
-				
-				if (immersiveMode())
-				{
-					if (stage)
-					{
-						stage.displayState = StageDisplayState.NORMAL;
-					}
-				}
-				else
+				if (!immersiveMode())
 				{
 					stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 				}
