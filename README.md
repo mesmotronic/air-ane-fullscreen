@@ -23,6 +23,8 @@ Using Android 4.0+, you can use true full screen in "lean mode", the way you see
 
 In Android 4.4+, however, you can now enter true full screen, fully interactive immersive mode. In this mode, your app will remain in true full screen until you choose otherwise; users can swipe down from the top of the screen to temporarily display the system UI.
 
+In addition, the `fullScreen()` method works on all mobile platforms supported by Adobe AIR, putting your app into the best available full screen mode: on Android 4.4+, it switches your app into [immersive mode](http://developer.android.com/training/system-ui/immersive.html), falling back to `FULL_SCREEN_INTERACTIVE` display state on earlier versions of Android and other mobile platforms.
+
 If you need to fix it, fork it!
 -------------------------------
 
