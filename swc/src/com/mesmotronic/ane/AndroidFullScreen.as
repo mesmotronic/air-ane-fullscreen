@@ -86,21 +86,12 @@ package com.mesmotronic.ane
 		 */
 		static public function fullScreen():Boolean
 		{
-			try
+			if (!immersiveMode() || !fullScreenDisplayState())
 			{
-				if (!immersiveMode())
-				{
-					stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
-				}
-				
-				return true;
-			}
-			catch (e:Error)
-			{
-				throwStageError();
+				return false;
 			}
 			
-			return false;
+			return true;
 		}
 		
 		/**
@@ -123,7 +114,6 @@ package com.mesmotronic.ane
 				|| Capabilities.screenResolutionY;
 		}
 		
-		
 		/**
 		 * Hides the system status and navigation bars
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
@@ -131,6 +121,8 @@ package com.mesmotronic.ane
 		static public function leanMode():Boolean
 		{
 			if (!isSupported) return false;
+			
+			normalDisplayState();
 			return context.call('leanMode');
 		}
 		
@@ -142,7 +134,9 @@ package com.mesmotronic.ane
 		 */
 		static public function immersiveMode(sticky:Boolean=true):Boolean
 		{
-			if (!isSupported) return false;
+			if (!isImmersiveModeSupported) return false;
+			
+			normalDisplayState();
 			return context.call('immersiveMode', sticky);
 		}
 		
@@ -185,17 +179,10 @@ package com.mesmotronic.ane
 		{
 			if (!isSupported)
 			{
-				try
-				{
-					stage.displayState = StageDisplayState.NORMAL;
-					return true;
-				}
-				catch (e:Error)
-				{
-					throwStageError();
-				}
+				return normalDisplayState();
 			}
 			
+			normalDisplayState();
 			return context.call('showSystemUI');
 		}
 		
@@ -206,6 +193,8 @@ package com.mesmotronic.ane
 		static public function showUnderSystemUI():Boolean
 		{
 			if (!isSupported) return false;
+			
+			normalDisplayState();
 			return context.call('showUnderSystemUI');
 		}
 		
@@ -217,9 +206,44 @@ package com.mesmotronic.ane
 			NativeApplication.nativeApplication.dispatchEvent(new Event(event.code));
 		}
 		
-		private static function throwStageError():void
+		/**
+		 * Switches the app to NORMAL display state, primarily to resolve issues
+		 * caused by users starting their app with <fullScreen>true</fullScreen>
+		 * in app.xml 
+		 */
+		private static function normalDisplayState():Boolean
 		{
-			throw new Error('AndroidFullScreen.stage is undefined: you need to set it to the current Stage before calling AndroidFullScreen.fullScreen()');
+			if (stage.displayState != StageDisplayState.NORMAL)
+			{
+				if (stage) 
+				{
+					stage.displayState = StageDisplayState.NORMAL;
+					return true;
+				}
+				
+				return false;
+			}
+			
+			return true;
+		}
+		
+		/**
+		 * Used as a fallback for Android <4.4 and non-Android apps
+		 */
+		private static function fullScreenDisplayState():Boolean
+		{
+			if (stage.displayState == StageDisplayState.NORMAL)
+			{
+				if (stage) 
+				{
+					stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+					return true;
+				}
+				
+				return false;
+			}
+			
+			return true;
 		}
 	}
 }
