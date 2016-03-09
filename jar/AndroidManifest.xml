@@ -1,13 +1,13 @@
 <manifest 
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mesmotronic.ane.fullscreen"
-    android:versionCode="142"
-    android:versionName="1.4.2" 
+    android:versionCode="143"
+    android:versionName="1.4.3" 
     >
 	
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="23"
+        android:targetSdkVersion="22"
         />
 
     <application />
