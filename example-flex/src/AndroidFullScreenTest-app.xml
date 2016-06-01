@@ -22,7 +22,6 @@
         <![CDATA[
 			<manifest android:installLocation="auto">
 			    <uses-permission android:name="android.permission.INTERNET"/>
-			    <application android:enabled="true" android:theme="@style/noAnimTheme"/>
 			</manifest>
 		]]>
 		</manifestAdditions>

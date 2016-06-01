@@ -25,6 +25,18 @@ In Android 4.4+, however, you can now enter true full screen, fully interactive 
 
 In addition, the `fullScreen()` method works on all mobile platforms supported by Adobe AIR, putting your app into the best available full screen mode: on Android 4.4+, it switches your app into [immersive mode](http://developer.android.com/training/system-ui/immersive.html), falling back to `FULL_SCREEN_INTERACTIVE` display state on earlier versions of Android and other mobile platforms.
 
+Workaround for black bar on Android 6.0
+---------------------------------------
+
+A bug in Android 6.0 means some users see a black bar at the bottom of their screen when using this ANE. This issue is resolved in Android 6.0.1, but if you haven't received the upgrade yet, you can fix it by changing the stage orientation twice, for example:
+
+```actionscript3
+AndroidFullScreen.stage = stage;
+AndroidFullScreen.fullScreen();
+stage.setOrientation(StageOrientation.UPSIDE_DOWN);
+stage.setOrientation(StageOrientation.UPSIDE_DOWN);
+```
+
 If you need to fix it, fork it!
 -------------------------------
 

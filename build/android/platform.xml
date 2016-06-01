@@ -1,8 +1,0 @@
-<platform xmlns="http://ns.adobe.com/air/extension/22.0">
-	<packagedResources>
-		<packagedResource>
-			<packageName>com.mesmotronic.ane.fullscreen</packageName>
-			<folderName>res</folderName>
-		</packagedResource>
-	</packagedResources>
-</platform>
