@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/19.0">
+<application xmlns="http://ns.adobe.com/air/application/22.0">
 
 	<id>com.mesmotronic.ane.fullscreen.test</id>
 
@@ -13,7 +13,7 @@
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
-		<renderMode>cpu</renderMode>
+		<renderMode>direct</renderMode>
     </initialWindow>
 	
 	<android>
@@ -22,6 +22,7 @@
         <![CDATA[
 			<manifest android:installLocation="auto">
 			    <uses-permission android:name="android.permission.INTERNET"/>
+			    <application android:enabled="true" android:theme="@style/noAnimTheme"/>
 			</manifest>
 		]]>
 		</manifestAdditions>

@@ -1,6 +1,7 @@
 @echo off
 
-copy ..\jar\bin\fullscreen-ane-jar.jar android
+xcopy ..\jar\bin\fullscreen-ane-jar.jar android /Y
+xcopy ..\jar\res android\res /S /E /I /Y
 
 call adt ^
  -package ^
