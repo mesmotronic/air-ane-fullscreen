@@ -54,22 +54,18 @@ package com.mesmotronic.ane
 		
 		static private function init():void
 		{
-			var version:String = Capabilities.version.substr(0,3);
+			var isAndroid:Boolean = Capabilities.manufacturer.indexOf("Android")  > -1;
 			
-			switch (version)
+			if (isAndroid)
 			{
-				case 'AND':
+				context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.fullscreen', '');
+				
+				if (isSupported)
 				{
-					context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.fullscreen', '');
-					
-					if (isSupported)
-					{
-						context.call('init');
-						context.addEventListener(StatusEvent.STATUS, context_statusHandler);
-					}
-					
-					break;
+					context.call('init');
+					context.addEventListener(StatusEvent.STATUS, context_statusHandler);
 				}
+				
 			}
 		}
 		
