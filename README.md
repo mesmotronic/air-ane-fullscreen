@@ -77,6 +77,10 @@ AndroidFullScreen.showUnderSystemUI(); // Extend your app underneath the system 
 AndroidFullScreen.immersiveMode(); // Hide system UI and keep it hidden (Android 4.4+ only)
 AndroidFullScreen.immersiveMode(false); // Hide system UI until user swipes from top (Android 4.4+ only)
 
+// Example custom full screen mode
+
+AndroidFullScreen.setSystemUiVisibility(AndroidFullScreen.SYSTEM_UI_FLAG_FULLSCREEN | AndroidFullScreen.SYSTEM_UI_FLAG_LOW_PROFILE);
+
 // Events (will only work if ANE is supported)
 
 NativeApplication.nativeApplication.addEventListener(AndroidFullScreen.ANDROID_WINDOW_FOCUS_IN, focusHandler);

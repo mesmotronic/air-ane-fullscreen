@@ -43,6 +43,17 @@ package com.mesmotronic.ane
 		static public const ANDROID_WINDOW_FOCUS_IN:String = 'androidWindowFocusIn';
 		static public const ANDROID_WINDOW_FOCUS_OUT:String = 'androidWindowFocusOut';
 		
+		static public const SYSTEM_UI_FLAG_FULLSCREEN:int = 4;
+		static public const SYSTEM_UI_FLAG_HIDE_NAVIGATION:int = 2;
+		static public const SYSTEM_UI_FLAG_IMMERSIVE:int = 2048;
+		static public const SYSTEM_UI_FLAG_IMMERSIVE_STICKY:int = 4096;
+		static public const SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN:int = 1024;
+		static public const SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION:int = 512;
+		static public const SYSTEM_UI_FLAG_LAYOUT_STABLE:int = 256;
+		static public const SYSTEM_UI_FLAG_LIGHT_STATUS_BAR:int = 8192;
+		static public const SYSTEM_UI_FLAG_LOW_PROFILE:int = 1;
+		static public const SYSTEM_UI_FLAG_VISIBLE:int = 0;
+		
 		static public var stage:Stage;
 		
 		static private var context:ExtensionContext;
@@ -158,13 +169,23 @@ package com.mesmotronic.ane
 		
 		/**
 		 * Is immersive mode supported on this device? 
-		 * 
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */
 		static public function get isImmersiveModeSupported():Boolean
 		{
 			if (!isSupported) return false;
 			return context.call('isImmersiveModeSupported');
+		}
+		
+		/**
+		 * Proxy for Android's setSystemUiVisibility method
+		 * @see			https://developer.android.com/reference/android/view/View.html#setSystemUiVisibility(int)
+		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
+		 */
+		static public function setSystemUiVisibility(visibility:int):Boolean
+		{
+			if (!isSupported) return false;
+			return context.call('setSystemUiVisibility', visibility);
 		}
 		
 		/**

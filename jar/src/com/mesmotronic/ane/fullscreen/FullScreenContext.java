@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2015, Mesmotronic Limited
+Copyright (c) 2017, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -53,6 +53,7 @@ import com.mesmotronic.ane.fullscreen.functions.ImmersiveWidthFunction;
 import com.mesmotronic.ane.fullscreen.functions.InitFunction;
 import com.mesmotronic.ane.fullscreen.functions.IsImmersiveModeSupportedFunction;
 import com.mesmotronic.ane.fullscreen.functions.LeanModeFunction;
+import com.mesmotronic.ane.fullscreen.functions.SetSystemUiVisibilityFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowSystemUiFunction;
 import com.mesmotronic.ane.fullscreen.functions.ShowUnderSystemUiFunction;
 
@@ -78,6 +79,7 @@ public class FullScreenContext extends FREContext
 		functions.put("immersiveHeight", new ImmersiveHeightFunction());
 		functions.put("immersiveWidth", new ImmersiveWidthFunction());
 		functions.put("isImmersiveModeSupported", new IsImmersiveModeSupportedFunction());
+		functions.put("setSystemUiVisibility", new SetSystemUiVisibilityFunction());
 		functions.put("showSystemUI", new ShowSystemUiFunction());
 		functions.put("showUnderSystemUI", new ShowUnderSystemUiFunction());
 		

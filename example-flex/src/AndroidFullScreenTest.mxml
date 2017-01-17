@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	xmlns:fx="http://ns.adobe.com/mxml/2009" 
 	xmlns:s="library://ns.adobe.com/flex/spark" 
 	applicationDPI="160"
-	backgroundColor="#CCFF00"
+	backgroundColor="#99CCFF"
 	preinitialize="preinitializeHandler(event)"
 	resize="resizeHandler(event)"
 	addedToStage="addedToStageHandler(event)"
@@ -111,6 +111,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		label="showSystemUI()"
 		click="AndroidFullScreen.showSystemUI()"
 		enabled="{AndroidFullScreen.isSupported}"
+		width="75%"
+		/>
+	
+	<s:Button 
+		label="Custom: Classic full screen"
+		click="AndroidFullScreen.setSystemUiVisibility(AndroidFullScreen.SYSTEM_UI_FLAG_FULLSCREEN | AndroidFullScreen.SYSTEM_UI_FLAG_LOW_PROFILE)"
 		width="75%"
 		/>
 	
