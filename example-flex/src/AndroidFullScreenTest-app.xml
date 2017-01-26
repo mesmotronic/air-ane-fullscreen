@@ -9,11 +9,13 @@
 	
 	<initialWindow>
 		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
-		<autoOrients>true</autoOrients>
+		<autoOrients>false</autoOrients>
+		<aspectRatio>portrait</aspectRatio>
 		<fullScreen>false</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
 		<renderMode>direct</renderMode>
+		<depthAndStencil>true</depthAndStencil>
     </initialWindow>
 	
 	<android>
@@ -21,6 +23,7 @@
         <manifestAdditions>
         <![CDATA[
 			<manifest android:installLocation="auto">
+				<uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" />
 			    <uses-permission android:name="android.permission.INTERNET"/>
 			</manifest>
 		]]>

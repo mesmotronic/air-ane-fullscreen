@@ -117,6 +117,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	<s:Button 
 		label="Custom: Classic full screen"
 		click="AndroidFullScreen.setSystemUiVisibility(AndroidFullScreen.SYSTEM_UI_FLAG_FULLSCREEN | AndroidFullScreen.SYSTEM_UI_FLAG_LOW_PROFILE)"
+		enabled="{AndroidFullScreen.isSupported}"
 		width="75%"
 		/>
 	

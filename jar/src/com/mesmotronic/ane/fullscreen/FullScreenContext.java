@@ -39,6 +39,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.Window;
@@ -108,11 +109,16 @@ public class FullScreenContext extends FREContext
 			
 			_windowCallback = new Window.Callback()
 			{
-				
 				@Override
 				public ActionMode onWindowStartingActionMode(Callback callback) 
 				{
 					return windowCallback.onWindowStartingActionMode(callback);
+				}
+				
+				@Override
+				public ActionMode onWindowStartingActionMode(Callback callback, int type) 
+				{
+					return windowCallback.onWindowStartingActionMode(callback, type);
 				}
 				
 				@Override
@@ -145,6 +151,12 @@ public class FullScreenContext extends FREContext
 				public boolean onSearchRequested() 
 				{
 					return windowCallback.onSearchRequested();
+				}
+				
+				@Override
+				public boolean onSearchRequested(SearchEvent event) 
+				{
+					return windowCallback.onSearchRequested(event);
 				}
 				
 				@Override

@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2016, Mesmotronic Limited
+Copyright (c) 2017, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -74,7 +74,7 @@ package com.mesmotronic.ane
 				if (isSupported)
 				{
 					context.call('init');
-					context.addEventListener(StatusEvent.STATUS, context_statusHandler);
+					context.addEventListener(StatusEvent.STATUS, _statusHandler);
 				}
 				
 			}
@@ -93,7 +93,7 @@ package com.mesmotronic.ane
 		 */
 		static public function fullScreen():Boolean
 		{
-			if (!immersiveMode() || !fullScreenDisplayState())
+			if (!immersiveMode() || !_fullScreenDisplayState())
 			{
 				return false;
 			}
@@ -108,7 +108,7 @@ package com.mesmotronic.ane
 		static public function get fullScreenWidth():int
 		{
 			return immersiveWidth
-				|| Capabilities.screenResolutionX;
+				|| (stage ? stage.fullScreenWidth : Capabilities.screenResolutionX);
 		}
 		
 		/**
@@ -118,7 +118,7 @@ package com.mesmotronic.ane
 		static public function get fullScreenHeight():int
 		{
 			return immersiveHeight 
-				|| Capabilities.screenResolutionY;
+				|| (stage ? stage.fullScreenHeight : Capabilities.screenResolutionY);
 		}
 		
 		/**
@@ -129,7 +129,7 @@ package com.mesmotronic.ane
 		{
 			if (!isSupported) return false;
 			
-			normalDisplayState();
+			_normalDisplayState();
 			return context.call('leanMode');
 		}
 		
@@ -143,7 +143,7 @@ package com.mesmotronic.ane
 		{
 			if (!isImmersiveModeSupported) return false;
 			
-			normalDisplayState();
+			_normalDisplayState();
 			return context.call('immersiveMode', sticky);
 		}
 		
@@ -196,10 +196,10 @@ package com.mesmotronic.ane
 		{
 			if (!isSupported)
 			{
-				return normalDisplayState();
+				return _normalDisplayState();
 			}
 			
-			normalDisplayState();
+			_normalDisplayState();
 			return context.call('showSystemUI');
 		}
 		
@@ -211,14 +211,14 @@ package com.mesmotronic.ane
 		{
 			if (!isSupported) return false;
 			
-			normalDisplayState();
+			_normalDisplayState();
 			return context.call('showUnderSystemUI');
 		}
 		
 		/**
 		 * Dispatch status events from the ANE via the NativeApplication object
 		 */
-		private static function context_statusHandler(event:StatusEvent):void
+		private static function _statusHandler(event:StatusEvent):void
 		{
 			NativeApplication.nativeApplication.dispatchEvent(new Event(event.code));
 		}
@@ -228,7 +228,7 @@ package com.mesmotronic.ane
 		 * caused by users starting their app with <fullScreen>true</fullScreen>
 		 * in app.xml 
 		 */
-		private static function normalDisplayState():Boolean
+		private static function _normalDisplayState():Boolean
 		{
 			if (stage.displayState != StageDisplayState.NORMAL)
 			{
@@ -247,7 +247,7 @@ package com.mesmotronic.ane
 		/**
 		 * Used as a fallback for Android <4.4 and non-Android apps
 		 */
-		private static function fullScreenDisplayState():Boolean
+		private static function _fullScreenDisplayState():Boolean
 		{
 			if (stage.displayState == StageDisplayState.NORMAL)
 			{

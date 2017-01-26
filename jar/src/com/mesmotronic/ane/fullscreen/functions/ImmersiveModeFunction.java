@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, Mesmotronic Limited
+Copyright (c) 2017, Mesmotronic Limited
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -37,6 +37,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
@@ -125,6 +126,12 @@ public class ImmersiveModeFunction implements FREFunction
 					}
 					
 					@Override
+					public ActionMode onWindowStartingActionMode(Callback callback, int type) 
+					{
+						return windowCallback.onWindowStartingActionMode(callback, type);
+					}
+					
+					@Override
 					public void onWindowFocusChanged(boolean hasFocus) 
 					{
 						if (hasFocus)
@@ -145,6 +152,12 @@ public class ImmersiveModeFunction implements FREFunction
 					public boolean onSearchRequested() 
 					{
 						return windowCallback.onSearchRequested();
+					}
+					
+					@Override
+					public boolean onSearchRequested(SearchEvent event) 
+					{
+						return windowCallback.onSearchRequested(event);
 					}
 					
 					@Override
