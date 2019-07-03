@@ -2,7 +2,7 @@
 
 xcopy ..\jar\bin\fullscreen-ane-jar.jar android /Y
 
-call "C:\Program Files\Adobe\Adobe Flash Builder 4.7 (64 Bit)\sdks\4.16.1 AIR33\bin\adt" ^
+call adt ^
  -package ^
  -target ane ./AndroidFullScreen.ane extension.xml ^
  -swc ../swc/bin/fullscreen-ane-swc.swc ^
