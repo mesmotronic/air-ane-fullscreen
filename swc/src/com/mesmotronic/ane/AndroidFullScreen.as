@@ -139,12 +139,12 @@ package com.mesmotronic.ane
 		 * 
 		 * @return		Boolean		false if unsuccessful or not supported, otherwise true
 		 */
-		static public function immersiveMode(sticky:Boolean=true):Boolean
+		static public function immersiveMode(sticky:Boolean=true, showUnderDisplayCutouts:Boolean=false):Boolean
 		{
 			if (!isImmersiveModeSupported) return false;
 			
 			_normalDisplayState();
-			return context.call('immersiveMode', sticky);
+			return context.call('immersiveMode', sticky, showUnderDisplayCutouts);
 		}
 		
 		/**
