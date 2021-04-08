@@ -8,6 +8,12 @@
 				<initializer>com.mesmotronic.ane.fullscreen.FullScreenExtension</initializer>
 			</applicationDeployment>
 		</platform>
+		<platform name="Android-ARM64">
+			<applicationDeployment>
+				<nativeLibrary>fullscreen-ane-jar.jar</nativeLibrary>
+				<initializer>com.mesmotronic.ane.fullscreen.FullScreenExtension</initializer>
+			</applicationDeployment>
+		</platform>
 		<platform name="Android-x86">
 			<applicationDeployment>
 				<nativeLibrary>fullscreen-ane-jar.jar</nativeLibrary>

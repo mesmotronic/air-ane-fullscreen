@@ -40,6 +40,7 @@ import android.view.MotionEvent;
 import android.view.SearchEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -64,10 +65,12 @@ public class ImmersiveModeFunction implements FREFunction
 			final FullScreenContext fsc = (FullScreenContext) context; 
 			
 			Boolean isSticky = true;
+			Boolean showUnderDisplayCutouts = false;
 			
 			try 
 			{
 				isSticky = args[0].getAsBool();
+				showUnderDisplayCutouts = args[1].getAsBool();
 			}
 			catch (Exception e3) {}
 			
@@ -84,6 +87,11 @@ public class ImmersiveModeFunction implements FREFunction
 				| immersive;
 			
 			fsc.resetUi();
+			if (showUnderDisplayCutouts && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
+			{
+				fsc.getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+			}
+
 			fsc.setSystemUiVisibility(uiOptions);
 			
 			if (isSticky)
